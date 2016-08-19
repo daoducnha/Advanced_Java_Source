@@ -79,12 +79,16 @@ public class Employee {
     }
 
     public double calTaxIncome() {
-        double taxIncome = this.calPersonalIncome() - SALARYMOTH - numAppendant * PEOPLE;
-        return taxIncome;
+        if (this.calPersonalIncome() > SALARYMOTH) {
+            double taxIncome = this.calPersonalIncome() - SALARYMOTH - numAppendant * PEOPLE;
+            return taxIncome;
+        } else {
+            return 0;
+        }
     }
 
     public double calTaxPersionnal() {
-        
+
         double taxP;
         double taxI = this.calTaxIncome();
         if (taxI > rateTax.RATE6.getRank()) {
