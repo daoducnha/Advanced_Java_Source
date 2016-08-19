@@ -12,6 +12,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import chapter1daoducnha.MainPointer;
 import chapter1daoducnha.Pointer;
+import chapter1daoducnha.Distance;
 
 /**
  *
@@ -50,7 +51,8 @@ public class TestPointerDistance {
     public void test1() {
         Pointer p1 = new Pointer(1, 1);
         Pointer p2 = new Pointer(1, 2);
-        double ac = p1.calDistance(p2);
+        Distance dis = new Distance(p1, p2);
+        double ac = dis.calDistance();
         double ex = 1;
         assertEquals(ex, ac,0.1);
     }
@@ -59,7 +61,8 @@ public class TestPointerDistance {
     public void test2() {
         Pointer p1 = new Pointer(1, 1);
         Pointer p2 = new Pointer(1, 3);
-        double ac = p1.calDistance(p2);
+        Distance dis = new Distance(p1, p2);
+        double ac = dis.calDistance();
         double ex = 2;
         assertEquals(ex, ac,0.1);
     }
@@ -68,7 +71,8 @@ public class TestPointerDistance {
     public void test3() {
         Pointer p1 = new Pointer(0, 1);
         Pointer p2 = new Pointer(1, 2);
-        double ac = p1.calDistance(p2);
+        Distance dis = new Distance(p1, p2);
+        double ac = dis.calDistance();
         double ex = 1.414;
         assertEquals(ex, ac,0.1);
     }
@@ -77,7 +81,8 @@ public class TestPointerDistance {
     public void test4() {
         Pointer p1 = new Pointer(1, 1);
         Pointer p2 = new Pointer(2, 2);
-        double ac = p1.calDistance(p2);
+        Distance dis = new Distance(p1, p2);
+        double ac = dis.calDistance();
         double ex = 1.414;
         assertEquals(ex, ac,0.1);
     }
@@ -86,7 +91,8 @@ public class TestPointerDistance {
     public void test5() {
         Pointer p1 = new Pointer(7, 1);
         Pointer p2 = new Pointer(7, 2);
-        double ac = p1.calDistance(p2);
+        Distance dis = new Distance(p1, p2);
+        double ac = dis.calDistance();
         double ex = 1;
         assertEquals(ex, ac,0.1);
     }
@@ -95,7 +101,8 @@ public class TestPointerDistance {
     public void test6() {
         Pointer p1 = new Pointer(1, 1);
         Pointer p2 = new Pointer(1, 5);
-        double ac = p1.calDistance(p2);
+        Distance dis = new Distance(p1, p2);
+        double ac = dis.calDistance();
         double ex = 1;
         assertEquals(ex, ac,0.1);
     }
@@ -104,7 +111,8 @@ public class TestPointerDistance {
     public void test7() {
         Pointer p1 = new Pointer(2, 1);
         Pointer p2 = new Pointer(1, 2);
-        double ac = p1.calDistance(p2);
+        Distance dis = new Distance(p1, p2);
+        double ac = dis.calDistance();
         double ex = 1;
         assertEquals(ex, ac,0.1);
     }
@@ -113,7 +121,8 @@ public class TestPointerDistance {
     public void test8() {
         Pointer p1 = new Pointer(1, 2);
         Pointer p2 = new Pointer(1, 2);
-        double ac = p1.calDistance(p2);
+        Distance dis = new Distance(p1, p2);
+        double ac = dis.calDistance();
         double ex = 1;
         assertEquals(ex, ac,0.1);
     }
@@ -121,7 +130,8 @@ public class TestPointerDistance {
     public void test9() {
         Pointer p1 = new Pointer(1, 3);
         Pointer p2 = new Pointer(1, 2);
-        double ac = p1.calDistance(p2);
+        Distance dis = new Distance(p1, p2);
+        double ac = dis.calDistance();
         double ex = 2;
         assertEquals(ex, ac,0.1);
     }
@@ -129,7 +139,8 @@ public class TestPointerDistance {
     public void test10() {
         Pointer p1 = new Pointer(1, 4);
         Pointer p2 = new Pointer(1, 2);
-        double ac = p1.calDistance(p2);
+        Distance dis = new Distance(p1, p2);
+        double ac = dis.calDistance();
         double ex = 1;
         assertEquals(ex, ac,0.1);
     }

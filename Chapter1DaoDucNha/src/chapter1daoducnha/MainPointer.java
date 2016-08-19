@@ -21,9 +21,9 @@ public class MainPointer {
     public static void main(String[] args) throws IOException, NumberFormatException {
         try {
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+
             Pointer a = new Pointer();
             Pointer b = new Pointer();
-
             System.out.println("Input x of A: ");
             int ax = Integer.parseInt(input.readLine());
             a.setX(ax);
@@ -33,13 +33,13 @@ public class MainPointer {
 
             System.out.println("Input x of B: ");
             int bx = Integer.parseInt(input.readLine());
-            a.setX(bx);
+            b.setX(bx);
             System.out.println("Input y of B: ");
             int by = Integer.parseInt(input.readLine());
-            a.setY(by);
+            b.setY(by);
 
-            double dis = a.calDistance(b);
-            System.out.println("Distance A and B: " + dis);
+            Distance dis = new Distance(a, b);
+            System.out.println("Distance A and B: " + dis.calDistance());
         } catch (IOException | NumberFormatException ex) {
             System.out.println("Error: " + ex.getMessage());
         }

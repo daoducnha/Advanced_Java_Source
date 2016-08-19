@@ -36,13 +36,17 @@ public class Circle {
 
     //calculate Circumference of circle out Circumference
     public double calCircumference() {
-        double radius = o.calDistance(r);
+        Distance dis = new Distance(o, r);
+        double radius = dis.calDistance();
         double cir = 2 * radius * Math.PI;
         return cir;
     }
+
     //calculate area of circle out area
+
     public double calArea() {
-        double radius = o.calDistance(r);
+        Distance dis = new Distance(o, r);
+        double radius = dis.calDistance();
         double ar = radius * radius * Math.PI;
         return ar;
     }
