@@ -106,7 +106,7 @@ public class Employee {
         } else if (taxI > rateTax.RATE1.getRank()) {
             taxP = (taxI - rateTax.RATE1.getRank()) * 0.1 + rateTax.RATE1.getRank() * 0.05;
         } else {
-            taxP = taxI + 0.05;
+            taxP = taxI * 0.05;
         }
         return taxP;
     }
