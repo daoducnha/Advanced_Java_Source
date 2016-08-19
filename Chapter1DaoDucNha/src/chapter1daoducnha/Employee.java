@@ -5,16 +5,18 @@
  */
 package chapter1daoducnha;
 
+import jdk.nashorn.internal.codegen.CompilerConstants;
+
 enum rateTax {
 
-    RATE1(250000), RATE2(500000), RATE3(1200000), RATE4(2800000), RATE5(5000000), RATE6(8400000);
+    RATE1(5000000), RATE2(10000000), RATE3(18000000), RATE4(32000000), RATE5(52000000), RATE6(80000000);
     double rank;
 
     private rateTax(double rank) {
         this.rank = rank;
     }
-    
-    public double getRank(){
+
+    public double getRank() {
         return rank;
     }
 }
@@ -22,7 +24,8 @@ enum rateTax {
 public class Employee {
 
     final double BASICPAY = 1260000;
-
+    final double SALARYMOTH = 9000000;
+    final double PEOPLE = 3600000;
     String name;
     double payRate;
     int numAppendant;
@@ -70,4 +73,46 @@ public class Employee {
         this.fringeBenefits = fringeBenefits;
     }
 
+    public double calPersonalIncome() {
+        double income = payRate * BASICPAY + fringeBenefits;
+        return income;
+    }
+
+    public double calTaxIncome() {
+        double taxIncome = this.calPersonalIncome() - SALARYMOTH - numAppendant * PEOPLE;
+        return taxIncome;
+    }
+
+    public double calTaxPersionnal() {
+        
+        double taxP;
+        double taxI = this.calTaxIncome();
+        if (taxI > rateTax.RATE6.getRank()) {
+            taxP = (taxI - rateTax.RATE6.rank) * 0.35 + rateTax.RATE5.getRank() * 0.3
+                    + rateTax.RATE4.getRank() * 0.25 + rateTax.RATE3.getRank() * 0.2
+                    + rateTax.RATE2.getRank() * 0.15 + rateTax.RATE1.getRank() * 0.1 + rateTax.RATE1.getRank() * 0.05;
+        } else if (taxI > rateTax.RATE5.getRank()) {
+            taxP = (taxI - rateTax.RATE5.getRank()) * 0.3 + rateTax.RATE4.getRank() * 0.25
+                    + rateTax.RATE3.getRank() * 0.2 + rateTax.RATE2.getRank() * 0.15
+                    + rateTax.RATE1.getRank() * 0.1 + rateTax.RATE1.getRank() * 0.05;
+        } else if (taxI > rateTax.RATE4.getRank()) {
+            taxP = (taxI - rateTax.RATE4.getRank()) * 0.25 + rateTax.RATE3.getRank() * 0.2
+                    + rateTax.RATE2.getRank() * 0.15 + rateTax.RATE1.getRank() * 0.1 + rateTax.RATE1.getRank() * 0.05;
+        } else if (taxI > rateTax.RATE3.getRank()) {
+            taxP = (taxI - rateTax.RATE3.getRank()) * 0.2 + rateTax.RATE2.getRank() * 0.15
+                    + rateTax.RATE1.getRank() * 0.1 + rateTax.RATE1.getRank() * 0.05;
+        } else if (taxI > rateTax.RATE2.getRank()) {
+            taxP = (taxI - rateTax.RATE2.getRank()) * 0.15 + rateTax.RATE1.getRank() * 0.1;
+        } else if (taxI > rateTax.RATE1.getRank()) {
+            taxP = (taxI - rateTax.RATE1.getRank()) * 0.1 + rateTax.RATE1.getRank() * 0.05;
+        } else {
+            taxP = taxI + 0.05;
+        }
+        return taxP;
+    }
+
+    public double calRealIncome() {
+        double real = this.calPersonalIncome() - this.calTaxPersionnal();
+        return real;
+    }
 }

@@ -32,9 +32,5 @@ public class Pointer {
     public void setY(int y) {
         this.y = y;
     }
-    
-     public double calDistance(Pointer a) {
-        double distance = Math.sqrt((this.x - a.x) * (this.x - a.x) + (this.y - a.y) * (this.y - a.y));
-        return distance;
-    }
+      
 }
