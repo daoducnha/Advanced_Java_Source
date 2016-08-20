@@ -34,7 +34,9 @@ public class MainCD {
                 }else{
                     System.out.println("CD is exist!Please input new CD");
                 }
+                System.out.println("List CD:=============================");
                 mCD.PrintArrayCD();
+                System.out.println("=====================================");
                 System.out.println("All price: " + mCD.calAllPrice());
                 count++;
             }
