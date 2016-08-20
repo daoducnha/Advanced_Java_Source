@@ -54,16 +54,19 @@ public class ManageCD {
     }
 
     //check a CD is exist in Array cd
-    /*public boolean checkCD(CD c) {
+    public boolean checkCD(CD c) {
         for (CD cd1 : cd) {
-            if ((c.id.eq cd1.id && c.name == cd1.name && c.singer == cd1.singer && c.numOfSing == cd1.numOfSing && c.price == cd1.price)
-                
+            if(c.equals(cd1))
                 return true;
         }
         return false;
-    }*/
+    }
 
     //Add a CD , return true id success else return false
+
+  
+
+    
     public boolean addCD(CD c) {
         for (int i = 0; i < cd.length; i++) {
             if (cd[i] == null) {

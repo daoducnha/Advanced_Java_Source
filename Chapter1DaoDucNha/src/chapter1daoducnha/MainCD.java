@@ -28,10 +28,12 @@ public class MainCD {
                 ManageCD mCD = new ManageCD(arrCD);
                 CD cd;
                 cd = mCD.inputInformation();
-              //  if (mCD.checkCD(cd) == false) {
+                if (mCD.checkCD(cd) == false) {
                     mCD.addCD(cd);
-                    System.out.println("add OK");                    
-           //   }
+                    System.out.println("Add CD success!");
+                }else{
+                    System.out.println("CD is exist!Please input new CD");
+                }
                 mCD.PrintArrayCD();
                 System.out.println("All price: " + mCD.calAllPrice());
                 count++;
