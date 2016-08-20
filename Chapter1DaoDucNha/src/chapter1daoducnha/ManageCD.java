@@ -5,64 +5,91 @@
  */
 package chapter1daoducnha;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+
 public class ManageCD {
-    String codeCD;
-    String nameCD;
-    String singer;
-    int numOfSong;
-    double price;
+
+    CD[] cd;
 
     public ManageCD() {
     }
 
-    public ManageCD(String codeCD, String nameCD, String singer, int numOfSong, double price) {
-        this.codeCD = codeCD;
-        this.nameCD = nameCD;
-        this.singer = singer;
-        this.numOfSong = numOfSong;
-        this.price = price;
+    public ManageCD(CD[] cd) {
+        this.cd = cd;
     }
 
-    public String getCodeCD() {
-        return codeCD;
+    public CD[] getCd() {
+        return cd;
     }
 
-    public void setCodeCD(String codeCD) {
-        this.codeCD = codeCD;
+    public void setCd(CD[] cd) {
+        this.cd = cd;
     }
 
-    public String getNameCD() {
-        return nameCD;
+    public CD inputInformation() throws IOException, NumberFormatException {
+        try {
+
+            BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+
+            System.out.println("Input id of CD: ");
+            String id = input.readLine();
+            System.out.println("Input name of CD: ");
+            String name = input.readLine();
+            System.out.println("Input singer: ");
+            String singer = input.readLine();
+            System.out.println("Input numeber of songs: ");
+            int numOfSongs = Integer.parseInt(input.readLine());
+            System.out.println("Input price of CD: ");
+            double price = Double.parseDouble(input.readLine());
+
+            CD cd = new CD(id, name, singer, numOfSongs, price);
+            return cd;
+        } catch (IOException | NumberFormatException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        return null;
     }
 
-    public void setNameCD(String nameCD) {
-        this.nameCD = nameCD;
+    //check a CD is exist in Array cd
+    /*public boolean checkCD(CD c) {
+        for (CD cd1 : cd) {
+            if ((c.id.eq cd1.id && c.name == cd1.name && c.singer == cd1.singer && c.numOfSing == cd1.numOfSing && c.price == cd1.price)
+                
+                return true;
+        }
+        return false;
+    }*/
+
+    //Add a CD , return true id success else return false
+    public boolean addCD(CD c) {
+        for (int i = 0; i < cd.length; i++) {
+            if (cd[i] == null) {
+                cd[i] = c;
+                return true;
+            }
+        }
+        return false;
     }
 
-    public String getSinger() {
-        return singer;
+    //calculate all price of cd of array CD
+    public double calAllPrice() {
+        double allPrice = 0;
+        for (int i = 0; i < cd.length; i++) {
+            if (cd[i] != null) {
+                allPrice += cd[i].price;
+            }
+        }
+        return allPrice;
     }
 
-    public void setSinger(String singer) {
-        this.singer = singer;
+    public void PrintArrayCD() {
+        for (CD cd1 : cd) {
+            if (cd1 != null) {
+                System.out.println(cd1.toString());
+            }
+        }
     }
-
-    public int getNumOfSong() {
-        return numOfSong;
-    }
-
-    public void setNumOfSong(int numOfSong) {
-        this.numOfSong = numOfSong;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-    
-    
-    
 }
