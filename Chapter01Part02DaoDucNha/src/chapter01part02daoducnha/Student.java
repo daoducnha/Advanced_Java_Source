@@ -5,6 +5,8 @@
  */
 package chapter01part02daoducnha;
 
+import java.util.Objects;
+
 /**
  *
  * @author NHA
@@ -53,4 +55,44 @@ public class Student extends Human {
         double avg = (semester1 + semester2) / 2;
         return avg;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.nameClass);
+        hash = 29 * hash + (int) (Double.doubleToLongBits(this.semester1) ^ (Double.doubleToLongBits(this.semester1) >>> 32));
+        hash = 29 * hash + (int) (Double.doubleToLongBits(this.semester2) ^ (Double.doubleToLongBits(this.semester2) >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Student other = (Student) obj;
+        if (Double.doubleToLongBits(this.semester1) != Double.doubleToLongBits(other.semester1)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.semester2) != Double.doubleToLongBits(other.semester2)) {
+            return false;
+        }
+        if (!Objects.equals(this.nameClass, other.nameClass)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+" AVG point: "+this.calPointAverage();
+    }
+    
+    
 }

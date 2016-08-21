@@ -14,6 +14,7 @@ import java.io.InputStreamReader;
  * @author NHA
  */
 public class ManageHuman {
+
     Teacher[] t;
     Student[] s;
 
@@ -40,8 +41,9 @@ public class ManageHuman {
     public void setS(Student[] s) {
         this.s = s;
     }
+
     //String classHead, double rankSalary, double allowance
-    public Teacher inputInfoTeacher(String name, String dateOfBirth, String address, String phoneNunber) throws IOException, NumberFormatException{
+    public Teacher inputInfoTeacher(String name, String dateOfBirth, String address, String phoneNunber) throws IOException, NumberFormatException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Input class head: ");
         String classHead = input.readLine();
@@ -51,10 +53,11 @@ public class ManageHuman {
         double allowance = Double.parseDouble(input.readLine());
         Teacher newT = new Teacher(classHead, rankSalary, allowance, name, dateOfBirth, address, phoneNunber);
         return newT;
-                
+
     }
+
     //String nameClass, double semester1, double semester2
-    public Student inputInfoStudent(String name, String dateOfBirth, String address, String phoneNunber)throws IOException, NumberFormatException{
+    public Student inputInfoStudent(String name, String dateOfBirth, String address, String phoneNunber) throws IOException, NumberFormatException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Input name class: ");
         String nameClass = input.readLine();
@@ -65,40 +68,58 @@ public class ManageHuman {
         Student newS = new Student(nameClass, semester1, semester2, name, dateOfBirth, address, phoneNunber);
         return newS;
     }
-    
-    public boolean addTeacher(Teacher newT){
+
+    public boolean addTeacher(Teacher newT) {
         for (int i = 0; i < t.length; i++) {
-            if(t[i]==null){
+            if (t[i] == null) {
                 t[i] = newT;
                 return true;
-            }                
+            }
         }
         return false;
     }
-    
-    public boolean addStudent(Student newS){
+
+    public boolean addStudent(Student newS) {
         for (int i = 0; i < s.length; i++) {
-            if(s[i]==null){
+            if (s[i] == null) {
                 s[i] = newS;
                 return true;
             }
         }
         return false;
     }
-    
-    public boolean checkTeacherExist(Teacher tc){
+
+    public boolean checkTeacherExist(Teacher tc) {
         for (int i = 0; i < t.length; i++) {
-            if(t[i].equals(tc))
+            if (tc.equals(t[i])) {
                 return true;
+            }
         }
         return false;
     }
-    
-    public boolean checkStudentExist(Student st){
+
+    public boolean checkStudentExist(Student st) {
         for (Student s1 : s) {
-            if(s1.equals(st))
+            if (st.equals(s1)) {
                 return true;
+            }
         }
         return false;
+    }
+
+    public void outputArrayTeacher() {
+        for (int i = 0; i < t.length; i++) {
+            if (t[i] != null) {
+                System.out.println(t[i].toString());
+            }
+        }
+    }
+
+    public void outputArrayStudent() {
+        for (int i = 0; i < s.length; i++) {
+            if (s[i] != null) {
+                System.out.println(s[i].toString());
+            }
+        }
     }
 }
