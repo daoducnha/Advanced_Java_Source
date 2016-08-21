@@ -15,14 +15,6 @@ import java.io.InputStreamReader;
  */
 public class MainTrade {
     public static void main(String[] args)throws IOException{
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("nhap ngay: ");
-        String ngay = input.readLine();
         
-        Trade t = new Trade();
-        
-        t.setDate(ngay);
-        
-        System.out.println(t.getDate());
     }
 }
