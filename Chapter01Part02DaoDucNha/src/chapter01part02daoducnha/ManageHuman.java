@@ -85,4 +85,20 @@ public class ManageHuman {
         }
         return false;
     }
+    
+    public boolean checkTeacherExist(Teacher tc){
+        for (int i = 0; i < t.length; i++) {
+            if(t[i].equals(tc))
+                return true;
+        }
+        return false;
+    }
+    
+    public boolean checkStudentExist(Student st){
+        for (Student s1 : s) {
+            if(s1.equals(st))
+                return true;
+        }
+        return false;
+    }
 }
