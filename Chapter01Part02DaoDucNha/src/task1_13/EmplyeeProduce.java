@@ -56,7 +56,7 @@ public class EmplyeeProduce extends Employee {
 
     @Override
     public double calPersonalIncome() {
-        double income = super.calPersonalIncome() + this.calBonus();
+        double income = payRate * BASICPAY + this.calBonus();
         return income;
     }
 

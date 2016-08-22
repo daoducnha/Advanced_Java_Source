@@ -9,10 +9,11 @@ package task1_13;
  *
  * @author hv
  */
-public class EmploySale extends Employee{
+public class EmploySale extends Employee {
+
     double salaryBusiness;
     double rateSale;
-    
+
     public EmploySale() {
     }
 
@@ -38,26 +39,24 @@ public class EmploySale extends Employee{
         this.rateSale = rateSale;
     }
 
-    
-    public double calBonus(){
-        double bonus = this.salaryBusiness*this.rateSale;
+    public double calBonus() {
+        double bonus = this.salaryBusiness * this.rateSale;
         return bonus;
     }
 
     @Override
     public double calPersonalIncome() {
-        double income =  super.calPersonalIncome() + this.calBonus();
+        double income = payRate * BASICPAY + this.calBonus();
         return income;
     }
 
     @Override
     public String toString() {
         return "Name: " + name + " - Pay Rate: "
-                        + payRate + " - Number Appendant: " + numAppendant
-                        + " - Fringe Benefits: " + fringeBenefits
-                        + " - Salary Business: " + salaryBusiness
-                        + " - Rate Sale: " + rateSale;
+                + payRate + " - Number Appendant: " + numAppendant
+                + " - Fringe Benefits: " + fringeBenefits
+                + " - Salary Business: " + salaryBusiness
+                + " - Rate Sale: " + rateSale;
     }
-    
-    
+
 }
