@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import chapter1daoducnha.Calculate;
+import task1_2.Calculate;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

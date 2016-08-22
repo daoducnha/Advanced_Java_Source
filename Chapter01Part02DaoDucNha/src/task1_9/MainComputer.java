@@ -36,12 +36,10 @@ public class MainComputer {
                 int choiseType = Integer.parseInt(input.readLine());
                 if (choiseType == 1) {
                     arrD[i] = mn.inputInfoDes();
-                    mn.printArrDes();
-                    mn.printArrLap();
+                    mn.printArrDes();                    
                     i++;
                 } else if (choiseType == 2) {
-                    arrL[j] = mn.inputInfoLap();
-                    mn.printArrDes();
+                    arrL[j] = mn.inputInfoLap();                    
                     mn.printArrLap();
                     j++;                                                    
                 }

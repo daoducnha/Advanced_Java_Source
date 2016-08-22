@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package chapter1daoducnha;
+package task1_1;
 
 /**
  * System.out.printf("a =%d, b = %d", a.x, b.x);Lin
