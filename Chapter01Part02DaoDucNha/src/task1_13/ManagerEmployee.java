@@ -14,6 +14,7 @@ import java.io.InputStreamReader;
  * @author hv
  */
 public class ManagerEmployee {
+
     EmploySale[] employSales;
     EmplyeeProduce[] emplyeeProduces;
 
@@ -37,9 +38,10 @@ public class ManagerEmployee {
     public void setEmplyeeProduces(EmplyeeProduce[] emplyeeProduces) {
         this.emplyeeProduces = emplyeeProduces;
     }
+
     //double salaryBusiness;
     //double rateSale;
-    public EmploySale inputInfoEmplySale(String name, double payRate, int numAppendant, double fringeBenefits)throws IOException{
+    public EmploySale inputInfoEmplySale(String name, double payRate, int numAppendant, double fringeBenefits) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Input Salary Business: ");
         double salaryBusiness = Double.parseDouble(input.readLine());
@@ -48,11 +50,8 @@ public class ManagerEmployee {
         EmploySale newS = new EmploySale(salaryBusiness, rateSale, name, payRate, numAppendant, fringeBenefits);
         return newS;
     }
-    
-    //int norm;
-    //int amount;
-    //double rateBonus;
-    public EmplyeeProduce inputInfoEmplyeeProduce(String name, double payRate, int numAppendant, double fringeBenefits)throws IOException, NumberFormatException{
+
+    public EmplyeeProduce inputInfoEmplyeeProduce(String name, double payRate, int numAppendant, double fringeBenefits) throws IOException, NumberFormatException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Input norm: ");
         int norm = Integer.parseInt(input.readLine());
@@ -60,20 +59,54 @@ public class ManagerEmployee {
         int amount = Integer.parseInt(input.readLine());
         System.out.println("Input Rate Bonus");
         Double rateBonus = Double.parseDouble(input.readLine());
-        
+
         EmplyeeProduce newP = new EmplyeeProduce(norm, amount, rateBonus, name, payRate, numAppendant, fringeBenefits);
         return newP;
     }
-    /*
-    *
-String name;
-    double payRate;
-    int numAppendant;
-    double fringeBenefits;    */
-    public void outputArrEmploySale(){
+
+    public void outputArrEmploySale() {
         for (EmploySale values : employSales) {
-            if(values!=null)
-                System.out.println("Name: "+values.name);
+            if (values != null) {
+                System.out.println("Name: " + values.name + " - Pay Rate: "
+                        + values.payRate + " - Number Appendant: " + values.numAppendant
+                        + " - Fringe Benefits: " + values.fringeBenefits
+                        + " - Salary Business: " + values.salaryBusiness
+                        + " - Rate Sale: " + values.rateSale + " - Bonus: " + values.calBonus());
+            }
         }
+    }
+
+    public void outputArrEmployProduce() {
+        for (EmplyeeProduce values : emplyeeProduces) {
+            if (values != null) {
+                System.out.println("Name: " + values.name + " - Pay Rate: "
+                        + values.payRate + " - Number Appendant: " + values.numAppendant
+                        + " - Fringe Benefits: " + values.fringeBenefits
+                        + " - Norms: " + values.norm
+                        + " - Amount: " + values.amount + "Rate Bonus: "
+                        + values.rateBonus + " - Bonus: " + values.calBonus());
+            }
+        }
+    }
+
+    public boolean addEmploySale(EmploySale newS) {
+        for (int i = 0; i < employSales.length; i++) {
+            if (employSales[i] == null) {
+                employSales[i] = newS;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean addEmplyeeProduce(EmplyeeProduce newP) {
+        for (int i = 0; i < emplyeeProduces.length; i++) {
+            if (emplyeeProduces[i] != null) {
+                emplyeeProduces[i] = newP;
+                return true;
+            }
+        }
+        return false;
     }
 }
