@@ -37,15 +37,20 @@ public class MainComputer {
                 if (choiseType == 1) {
                     arrD[i] = mn.inputInfoDes();
                     mn.printArrDes();
+                    mn.printArrLap();
                     i++;
                 } else if (choiseType == 2) {
                     arrL[j] = mn.inputInfoLap();
+                    mn.printArrDes();
                     mn.printArrLap();
                     j++;                                                    
                 }
             }
 
         } while (flag == true);
+        for (Destop values : arrD) {
+            
+        }
     }
 
 }
