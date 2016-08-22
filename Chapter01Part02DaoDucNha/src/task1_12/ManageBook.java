@@ -60,6 +60,26 @@ public class ManageBook {
         return rb;
     }
 
+    public boolean addTextBook(TextBook newtb){
+        for (int i = 0; i < textBook.length; i++) {
+            if(textBook[i] == null){
+                textBook[i] = newtb;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean addReferanceBook(ReferenceBook newrb){
+        for (int i = 0; i < referenceBook.length; i++) {
+            if(referenceBook[i] ==null){
+                referenceBook[i] = newrb;
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public void outputArrTextBook() {
         for (TextBook values : textBook) {
             if (values != null) {
@@ -71,13 +91,13 @@ public class ManageBook {
         }
     }
 
-    public void outputArroutputArr() {
+    public void outputArrReferanceBook() {
         for (ReferenceBook values : referenceBook) {
             if (values != null) {
                 System.out.println("ID: " + values.id + " - Tittle: " + values.tittle
                         + " - Date: " + values.date + " - Price:" + values.price
                         + " - Amount: " + values.amount + " - Publisher: " + values.publisher
-                        + " - Status: " + values.tax);
+                        + " - Tax: " + values.tax);
             }
         }
     }

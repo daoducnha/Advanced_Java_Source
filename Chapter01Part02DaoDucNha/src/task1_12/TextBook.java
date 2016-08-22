@@ -9,6 +9,22 @@ package task1_12;
  *
  * @author hv
  */
-public class TextBook {
-    
+public class TextBook extends Book{
+    int status;
+
+    public TextBook() {
+    }
+
+    public TextBook(int status, String id, String tittle, String date, double price, int amount, String publisher) {
+        super(id, tittle, date, price, amount, publisher);
+        this.status = status;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    } 
 }
