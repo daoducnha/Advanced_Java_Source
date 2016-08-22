@@ -56,8 +56,16 @@ public class EmplyeeProduce extends Employee {
 
     @Override
     public double calPersonalIncome() {
-        double income = super.calPersonalIncome()+this.calBonus(); 
+        double income = super.calPersonalIncome() + this.calBonus();
         return income;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Name: " + name + " - Pay Rate: " + payRate + " - Number Appendant: "
+                + numAppendant + " - Fringe Benefits: " + fringeBenefits + " - Norms: "
+                + norm + " - Amount: " + amount + "Rate Bonus: " + rateBonus
+                + " - Bonus: " + calBonus();
+    }
+
 }

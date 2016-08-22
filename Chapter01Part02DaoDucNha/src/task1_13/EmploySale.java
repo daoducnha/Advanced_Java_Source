@@ -49,5 +49,15 @@ public class EmploySale extends Employee{
         double income =  super.calPersonalIncome() + this.calBonus();
         return income;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + " - Pay Rate: "
+                        + payRate + " - Number Appendant: " + numAppendant
+                        + " - Fringe Benefits: " + fringeBenefits
+                        + " - Salary Business: " + salaryBusiness
+                        + " - Rate Sale: " + rateSale;
+    }
+    
     
 }

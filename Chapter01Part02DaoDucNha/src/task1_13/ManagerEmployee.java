@@ -64,27 +64,34 @@ public class ManagerEmployee {
         return newP;
     }
 
+    /*
+     System.out.println("Personal Income: " + String.format("%f", e.calPersonalIncome()));
+     System.out.println("Tax Income: " + String.format("%f", e.calTaxIncome()));
+     System.out.println("Tax Persionnal Income: " + String.format("%f", e.calTaxPersionnal()));
+     System.out.println("Real Income: " + String.format("%f", e.calRealIncome()));
+     */
     public void outputArrEmploySale() {
         for (EmploySale values : employSales) {
             if (values != null) {
-                System.out.println("Name: " + values.name + " - Pay Rate: "
-                        + values.payRate + " - Number Appendant: " + values.numAppendant
-                        + " - Fringe Benefits: " + values.fringeBenefits
-                        + " - Salary Business: " + values.salaryBusiness
-                        + " - Rate Sale: " + values.rateSale + " - Bonus: " + values.calBonus());
+                System.out.println(values.toString());
+                System.out.println("Personal Income: " + String.format("%f", values.calPersonalIncome()));
+                System.out.println("Tax Income: " + String.format("%f", values.calTaxIncome()));
+                System.out.println("Tax Persionnal Income: " + String.format("%f", values.calTaxPersionnal()));
+                System.out.println("Real Income: " + String.format("%f", values.calRealIncome()));
+                System.out.println("----------------------------------------------------");
             }
         }
     }
 
     public void outputArrEmployProduce() {
-        for (EmplyeeProduce values : emplyeeProduces) {
-            if (values != null) {
-                System.out.println("Name: " + values.name + " - Pay Rate: "
-                        + values.payRate + " - Number Appendant: " + values.numAppendant
-                        + " - Fringe Benefits: " + values.fringeBenefits
-                        + " - Norms: " + values.norm
-                        + " - Amount: " + values.amount + "Rate Bonus: "
-                        + values.rateBonus + " - Bonus: " + values.calBonus());
+        for (int i = 0; i < emplyeeProduces.length; i++) {
+            if (emplyeeProduces[i] != null) {
+                System.out.println(emplyeeProduces[i].toString());
+                System.out.println("Personal Income: " + String.format("%f", emplyeeProduces[i].calPersonalIncome()));
+                System.out.println("Tax Income: " + String.format("%f", emplyeeProduces[i].calTaxIncome()));
+                System.out.println("Tax Persionnal Income: " + String.format("%f", emplyeeProduces[i].calTaxPersionnal()));
+                System.out.println("Real Income: " + String.format("%f", emplyeeProduces[i].calRealIncome()));
+                System.out.println("-----------------------------------------------");
             }
         }
     }
@@ -96,7 +103,6 @@ public class ManagerEmployee {
                 return true;
             }
         }
-
         return false;
     }
 
