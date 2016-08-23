@@ -5,10 +5,25 @@
  */
 package task1_16;
 
+
 /**
  *
- * @author NHA
+ * @author Dao Duc Nha
+ * @date 23/8/2016
+ * @version 1.0
+ * Class absstract for Means of transport
  */
-public class MeansOfTransport {
-    
+public abstract class MeansOfTransport {
+   double distance;
+   double time;
+   double fuel;
+   String id;
+   String color;
+   String Publisher;
+   
+   //method for calculater velocity
+   abstract double calVelocity();
+   //method for calculater consume
+   abstract double calConsume();
+
 }
