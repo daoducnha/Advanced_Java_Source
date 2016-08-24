@@ -9,6 +9,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ *
+ * @author Dao Duc Nha
+ * Date 24/8/2016
+ * @version 1.0 
+ * Class MainManageHuman
+ */
 public class MainManageHuman {
 
     public static void main(String[] args) throws IOException, NumberFormatException {

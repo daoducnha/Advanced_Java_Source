@@ -7,7 +7,10 @@ package task1_12;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * Date 24/8/2016
+ * @version 1.0 
+ * Class ReferenceBook include information Reference Book
  */
 public class ReferenceBook extends Book{
     double tax;

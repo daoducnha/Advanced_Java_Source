@@ -11,7 +11,10 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * Date 24/8/2016
+ * @version 1.0 
+ * Class main Book
  */
 public class MainBook {
 

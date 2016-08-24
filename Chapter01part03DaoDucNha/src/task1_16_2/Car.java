@@ -7,7 +7,10 @@ package task1_16_2;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @date 24/8/2016
+ * @version 1.0 
+ * Class class Car extends vehicle, implement consume, speed;
  */
 public class Car extends Vehicle implements IConsume, ISpeed {
 

@@ -7,7 +7,11 @@ package task1_15;
 
 /**
  *
- * @author NHA
+ * @author Dao Duc Nha
+ * @date 24/8/2016
+ * @version 1.0 
+ * Abstract Class Instrument 
+ * 
  */
 public abstract class Instrument {
     String nameIntrument;

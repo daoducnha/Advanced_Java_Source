@@ -9,7 +9,10 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * Date 24/8/2016
+ * @version 1.0 
+ * Class Book
  */
 public class Book {
     String id;

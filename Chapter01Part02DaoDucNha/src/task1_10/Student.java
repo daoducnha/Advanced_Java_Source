@@ -9,7 +9,10 @@ import java.util.Objects;
 
 /**
  *
- * @author NHA
+ * @author Dao Duc Nha
+ * Date 24/8/2016
+ * @version 1.0 
+ * Class Student extends Human
  */
 public class Student extends Human {
 
