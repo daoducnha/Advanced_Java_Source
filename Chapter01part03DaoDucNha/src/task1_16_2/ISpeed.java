@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package task1_16;
+package task1_16_2;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * Date 24/8/2016
+ * @version 1.0
+ * inteface ISpeed include method getSpeed;
  */
-public interface IConsume {
-
-    double calConsume();
+public interface ISpeed {
+    //get methed get Speed
+    double getSpeed();
 }

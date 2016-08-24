@@ -7,6 +7,7 @@ package task1_13;
 
 import jdk.nashorn.internal.codegen.CompilerConstants;
 
+//enum about Rate Tax
 enum rateTax {
 
     RATE1(5000000), RATE2(10000000), RATE3(18000000), RATE4(32000000), RATE5(52000000), RATE6(80000000);
@@ -21,6 +22,13 @@ enum rateTax {
     }
 }
 
+/**
+ *
+ * @author Dao Duc Nha
+ * date 24/8/2016
+ * @version 1.0
+ * Class EmploySale include information of Employee 
+ */
 public class Employee {
 
     final double BASICPAY = 1260000;
@@ -73,11 +81,12 @@ public class Employee {
         this.fringeBenefits = fringeBenefits;
     }
 
+    //calculate Personal Income input payRate, BASICPAY, fringe Benefits output income 
     public double calPersonalIncome() {
         double income = payRate * BASICPAY + fringeBenefits;
         return income;
     }
-
+    //calculate Tax Income input Personal Income, SALARYMOTH,number Appendant, PEOPLE output tax Income
     public double calTaxIncome() {
         if (this.calPersonalIncome() > SALARYMOTH) {
             double taxIncome = this.calPersonalIncome() - SALARYMOTH - numAppendant * PEOPLE;
@@ -87,6 +96,7 @@ public class Employee {
         }
     }
 
+    // calculate Tax Persionnal input Tax Income output Tax Persionnal
     public double calTaxPersionnal() {
 
         double taxP;
@@ -115,6 +125,7 @@ public class Employee {
         return taxP;
     }
 
+    //calculate real Income input Personal Income - Tax Persionnal output real  income
     public double calRealIncome() {
         double real = this.calPersonalIncome() - this.calTaxPersionnal();
         return real;

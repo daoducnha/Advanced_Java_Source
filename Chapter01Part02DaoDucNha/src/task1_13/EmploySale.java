@@ -7,7 +7,10 @@ package task1_13;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * date 24/8/2016
+ * @version 1.0
+ * Class EmploySale incude information of Employee Sale
  */
 public class EmploySale extends Employee {
 
@@ -39,17 +42,20 @@ public class EmploySale extends Employee {
         this.rateSale = rateSale;
     }
 
+    //calculate Bonus input salaryBusiness, rateSale output bonus
     public double calBonus() {
         double bonus = this.salaryBusiness * this.rateSale;
         return bonus;
     }
 
+    //calculate PersonalIncome input payRate, BASICPAY, Bonus output income
     @Override
     public double calPersonalIncome() {
         double income = payRate * BASICPAY + this.calBonus();
         return income;
     }
 
+    //output infomation of employee Sale 
     @Override
     public String toString() {
         return "Name: " + name + " - Pay Rate: "

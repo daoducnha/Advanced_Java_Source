@@ -7,7 +7,10 @@ package task1_13;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * date 24/8/2016
+ * @version 1.0
+ * Class EmplyeeProduce extends class Emplyee
  */
 public class EmplyeeProduce extends Employee {
 
@@ -48,18 +51,20 @@ public class EmplyeeProduce extends Employee {
     public void setRateBonus(double rateBonus) {
         this.rateBonus = rateBonus;
     }
-
+    //calculate Bonus of Employee produce input amount, norm, rateBonus output bonus 
     public double calBonus() {
         double bonus = (amount - norm) * rateBonus;
         return bonus;
     }
 
+    //calculate Personal Income of Employee produce input Pay Rate, BASICPAY, Bonus output income
     @Override
     public double calPersonalIncome() {
         double income = payRate * BASICPAY + this.calBonus();
         return income;
     }
-
+    
+    //show information of Employee produce
     @Override
     public String toString() {
         return "Name: " + name + " - Pay Rate: " + payRate + " - Number Appendant: "

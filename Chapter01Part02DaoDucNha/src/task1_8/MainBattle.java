@@ -11,7 +11,9 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author NHA
+ * @author:Dao Duc Nha
+ * Date: 22/8/2016
+ * Version: 1.0 Class main battle
  */
 public class MainBattle {
 
@@ -24,7 +26,7 @@ public class MainBattle {
         Trooper t = new Trooper();
 
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-
+        //Input information of Infantryman
         System.out.println("input name of Infantryman: ");
         String nameIn = input.readLine();
         System.out.println("input power of Infantryman:");
@@ -37,6 +39,7 @@ public class MainBattle {
         i.setWeapon(weaponIn);        
         System.out.println(i.toString());
         
+        //input information of Trooper
         System.out.println("input name of Trooper: ");
         String nameTr = input.readLine();
         System.out.println("input power of Trooper: ");
@@ -49,6 +52,7 @@ public class MainBattle {
         t.setWeapon(weaponTr);
         System.out.println(t.toString());
         
+        //discription a battle
         while (t.power >= 0 && i.power >= 0) {
             System.out.println("Who will fight? Infantryman(1), Trooper(2)");
             int choise = Integer.parseInt(input.readLine());

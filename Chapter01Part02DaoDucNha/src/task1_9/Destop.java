@@ -7,7 +7,9 @@ package task1_9;
 
 /**
  *
- * @author NHA
+ * @author:Dao Duc Nha
+ * Date: 22/8/2016
+ * Version: 1.0 Class destop
  */
 public class Destop extends Computer{
     String CPU;
@@ -38,6 +40,7 @@ public class Destop extends Computer{
         this.RAM = RAM;
     }
 
+    //show information a destop
     @Override
     public String toString() {
         return super.toString()+"| CPU: "+CPU+"| RAM: "+RAM;

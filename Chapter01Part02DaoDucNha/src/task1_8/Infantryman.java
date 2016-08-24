@@ -7,7 +7,9 @@ package task1_8;
 
 /**
  *
- * @author NHA
+ * @author:Dao Duc Nha
+ * Date: 22/8/2016
+ * Version: 1.0 Class Infantryman
  */
 public class Infantryman extends Soldier{
 
@@ -18,11 +20,13 @@ public class Infantryman extends Soldier{
         super(name, power, weapon);
     }
 
+    //calculate figth of Infantryman
     public int fight(int power){
         return power - 2;
     }
 
-    @Override
+    //show information of Infantryman
+    @Override 
     public String toString() {
         return super.toString(); //To change body of generated methods, choose Tools | Templates.
     }

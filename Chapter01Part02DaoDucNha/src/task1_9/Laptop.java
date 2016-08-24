@@ -7,7 +7,9 @@ package task1_9;
 
 /**
  *
- * @author NHA
+ * @author:Dao Duc Nha
+ * Date: 22/8/2016
+ * Version: 1.0 Class Laptop
  */
 public class Laptop extends Computer {
 
@@ -49,6 +51,7 @@ public class Laptop extends Computer {
         this.sizeScreem = sizeScreem;
     }
 
+    //show information a laptop
     @Override
     public String toString() {
         return super.toString() + "| Weight: " + weight + "" + "| Time of PIN: " + timePin + "| Size of Screem: " + sizeScreem;

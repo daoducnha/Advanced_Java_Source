@@ -7,7 +7,9 @@ package task1_8;
 
 /**
  *
- * @author NHA
+ * @author:Dao Duc Nha
+ * Date: 22/8/2016
+ * Version: 1.0 Class soldier
  */
 public class Soldier {
 
@@ -52,6 +54,7 @@ public class Soldier {
         return power - 1;
     }
 
+    //show info of soledier
     @Override
     public String toString() {
         return "name: "+name+"| power: "+power+"| weapon: "+weapon; //To change body of generated methods, choose Tools | Templates.

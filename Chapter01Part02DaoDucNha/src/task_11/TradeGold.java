@@ -7,7 +7,9 @@ package task_11;
 
 /**
  *
- * @author hv
+ * @author:Dao Duc Nha
+ * Date: 22/8/2016
+ * Version: 1.0 Class  trade Gold
  */
 enum Gold {
 

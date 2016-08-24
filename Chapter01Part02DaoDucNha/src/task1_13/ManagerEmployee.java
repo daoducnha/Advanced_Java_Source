@@ -11,7 +11,10 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * date 24/8/2016
+ * @version 1.0
+ * Class ManagerEmployee for manage employee sale and produce
  */
 public class ManagerEmployee {
 
@@ -39,8 +42,7 @@ public class ManagerEmployee {
         this.emplyeeProduces = emplyeeProduces;
     }
 
-    //double salaryBusiness;
-    //double rateSale;
+    //input information of InfoEmply Sale output a new EmplySale
     public EmploySale inputInfoEmplySale(String name, double payRate, int numAppendant, double fringeBenefits) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Input Salary Business: ");
@@ -51,6 +53,7 @@ public class ManagerEmployee {
         return newS;
     }
 
+    //input information of Emplyee Produce output a new EmplyeeProduce
     public EmplyeeProduce inputInfoEmplyeeProduce(String name, double payRate, int numAppendant, double fringeBenefits) throws IOException, NumberFormatException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Input norm: ");
@@ -64,12 +67,7 @@ public class ManagerEmployee {
         return newP;
     }
 
-    /*
-     System.out.println("Personal Income: " + String.format("%f", e.calPersonalIncome()));
-     System.out.println("Tax Income: " + String.format("%f", e.calTaxIncome()));
-     System.out.println("Tax Persionnal Income: " + String.format("%f", e.calTaxPersionnal()));
-     System.out.println("Real Income: " + String.format("%f", e.calRealIncome()));
-     */
+    //output infomation array Employ sale 
     public void outputArrEmploySale() {
         for (EmploySale values : employSales) {
             if (values != null) {
@@ -83,6 +81,7 @@ public class ManagerEmployee {
         }
     }
 
+    //output infomation array Employ produce
     public void outputArrEmployProduce() {
         for (int i = 0; i < emplyeeProduces.length; i++) {
             if (emplyeeProduces[i] != null) {
@@ -96,6 +95,7 @@ public class ManagerEmployee {
         }
     }
 
+    //add a EmploySale into array EmploySale
     public boolean addEmploySale(EmploySale newS) {
         for (int i = 0; i < employSales.length; i++) {
             if (employSales[i] == null) {
@@ -106,6 +106,7 @@ public class ManagerEmployee {
         return false;
     }
 
+    //add a Employproduce into array Employproduce
     public boolean addEmplyeeProduce(EmplyeeProduce newP) {
         for (int i = 0; i < emplyeeProduces.length; i++) {
             if (emplyeeProduces[i] != null) {

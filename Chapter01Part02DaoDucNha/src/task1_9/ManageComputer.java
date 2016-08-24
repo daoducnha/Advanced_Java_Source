@@ -13,7 +13,9 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author NHA
+ * @author:Dao Duc Nha
+ * Date: 22/8/2016
+ * Version: 1.0 Class manage computer
  */
 public class ManageComputer {
 
@@ -43,8 +45,8 @@ public class ManageComputer {
     public void setL(Laptop[] l) {
         this.l = l;
     }
-    //String CPU, String RAM, String numSign, double price, String production, int count) {
-
+    
+    //input information a destop and out a object Destop
     public Destop inputInfoDes() throws IOException, NumberFormatException {
         try {
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -68,8 +70,8 @@ public class ManageComputer {
         }
         return null;
     }
-//double weight, int timePin, int sizeScreem, String numSign, double price, String production, int count
 
+    //input information a laptop and out a object Laptop
     public Laptop inputInfoLap() throws IOException, NumberFormatException {
         try {
             BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -96,6 +98,7 @@ public class ManageComputer {
         return null;
     }
 
+    //add a Destop into array destop return true if susscess else return false;
     public boolean addDestop(Destop dt) {
         for (int i = 0; i < d.length; i++) {
             if (d[i] == null) {
@@ -106,6 +109,7 @@ public class ManageComputer {
         return false;
     }
 
+    //add a Laptop into array laptop return true if susscess else return false;
     public boolean addLaptop(Laptop lt) {
         for (int i = 0; i < l.length; i++) {
             if (l[i] == null) {
@@ -116,6 +120,7 @@ public class ManageComputer {
         return false;
     }
     
+    //calculate all money of array destop, output money
     public double calMoneyOfDestop(){
         double money = 0;
         for (int i = 0; i < d.length; i++) {
@@ -124,6 +129,7 @@ public class ManageComputer {
         return money;
     }
     
+    //calculate all money of array laptop, output money
     public double calMoneyOfLaptop(){
         double money = 0;
         for (int i = 0; i < l.length; i++) {
@@ -131,12 +137,16 @@ public class ManageComputer {
         }
         return money;
     }
+    
+    //output information of array Destop
     public void printArrDes(){
         for (int i = 0; i < d.length; i++) {
             if(d[i]!=null)
                 System.out.println(d[i].toString());
         }
     }
+    
+    //output information of array Laptop
     public void printArrLap(){
         for (int i = 0; i < l.length; i++) {
             if(l[i]!=null){

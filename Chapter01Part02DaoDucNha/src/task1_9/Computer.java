@@ -7,7 +7,9 @@ package task1_9;
 
 /**
  *
- * @author NHA
+ * @author:Dao Duc Nha
+ * Date: 22/8/2016
+ * Version: 1.0 Class computer
  */
 public class Computer {
 
@@ -58,12 +60,14 @@ public class Computer {
         this.count = count;
     }
 
+    //show information a computer
     @Override
     public String toString() {
         String info = "num Sign: " + numSign + "| Price: " + price + "| Production" + production + "| Count" + count;
         return info;
     }
 
+    //Calculate money a type computer
     public double calMoney() {
         return price * count;
     }

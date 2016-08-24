@@ -11,7 +11,9 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author:Dao Duc Nha Date: 22/8/2016 Version: 1.0 Class manage trade
+ * @author:Dao Duc Nha
+ * Date: 22/8/2016
+ * Version: 1.0 Class manage trade
  */
 public class ManagerTrade {
 

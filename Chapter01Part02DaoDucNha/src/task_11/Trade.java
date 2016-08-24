@@ -13,9 +13,10 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author NHA
+ * @author:Dao Duc Nha
+ * Date: 22/8/2016
+ * Version: 1.0 Class  trade
  */
-
 public class Trade {
 
     String id;
