@@ -12,7 +12,11 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author NHA
+ * @author Dao Duc Nha
+ * @date 24/8/2016
+ * @version 1.0 
+ * Class MainInstrument  to manage Instrument
+ * 
  */
 public class MainInstrument {
     public static void main(String[] args) throws IOException{

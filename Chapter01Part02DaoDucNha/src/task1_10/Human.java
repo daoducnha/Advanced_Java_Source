@@ -10,7 +10,10 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author NHA
+ * @author Dao Duc Nha
+ * Date 24/8/2016
+ * @version 1.0 
+ * Class Human
  */
 public class Human {
 

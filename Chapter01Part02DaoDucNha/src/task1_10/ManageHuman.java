@@ -9,9 +9,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+
 /**
  *
- * @author NHA
+ * @author Dao Duc Nha
+ * Date 24/8/2016
+ * @version 1.0 
+ * Class ManageHuman
  */
 public class ManageHuman {
 
@@ -42,7 +46,7 @@ public class ManageHuman {
         this.s = s;
     }
 
-    //String classHead, double rankSalary, double allowance
+    //input info a Teacher and return Teacher
     public Teacher inputInfoTeacher(String name, String dateOfBirth, String address, String phoneNunber) throws IOException, NumberFormatException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Input class head: ");
@@ -56,7 +60,7 @@ public class ManageHuman {
 
     }
 
-    //String nameClass, double semester1, double semester2
+    //input info a Student and return Student
     public Student inputInfoStudent(String name, String dateOfBirth, String address, String phoneNunber) throws IOException, NumberFormatException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Input name class: ");
@@ -69,6 +73,7 @@ public class ManageHuman {
         return newS;
     }
 
+    //add new Teacher into array Teacher return true if susscess else retuen false
     public boolean addTeacher(Teacher newT) {
         for (int i = 0; i < t.length; i++) {
             if (t[i] == null) {
@@ -78,7 +83,7 @@ public class ManageHuman {
         }
         return false;
     }
-
+    //add new Student into array Student return true if susscess else retuen false
     public boolean addStudent(Student newS) {
         for (int i = 0; i < s.length; i++) {
             if (s[i] == null) {
@@ -89,6 +94,7 @@ public class ManageHuman {
         return false;
     }
 
+    //check a Teacher Exist true if exist false not exist
     public boolean checkTeacherExist(Teacher tc) {
         for (int i = 0; i < t.length; i++) {
             if (tc.equals(t[i])) {
@@ -97,7 +103,7 @@ public class ManageHuman {
         }
         return false;
     }
-
+    //check a Student Exist true if exist false not exist
     public boolean checkStudentExist(Student st) {
         for (Student s1 : s) {
             if (st.equals(s1)) {
@@ -107,6 +113,7 @@ public class ManageHuman {
         return false;
     }
 
+    //output info array Teacher
     public void outputArrayTeacher() {
         for (int i = 0; i < t.length; i++) {
             if (t[i] != null) {
@@ -115,6 +122,7 @@ public class ManageHuman {
         }
     }
 
+    //output info array Student
     public void outputArrayStudent() {
         for (int i = 0; i < s.length; i++) {
             if (s[i] != null) {

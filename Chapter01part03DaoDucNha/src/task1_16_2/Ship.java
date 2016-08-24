@@ -81,17 +81,18 @@ public class Ship extends Vehicle implements IConsume, ISpeed {
     public void setFuelType(String fuelType) {
         this.fuelType = fuelType;
     }
-
+    //calculate consume fuel of ship
     @Override
     public double getConsume() {
         return distance / (fuel - fuelConsumptionStart);
     }
-
+    //calculate speed fuel of ship
     @Override
     public double getSpeed() {
         return (distance / time) + (downstreamSpeed - upstreamSpeed);
     }
 
+    //output info of a Ship
     @Override
     public void showInfo() {
         System.out.println("Owner: "+owner);       

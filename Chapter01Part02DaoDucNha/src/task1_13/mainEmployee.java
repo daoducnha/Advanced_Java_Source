@@ -11,53 +11,60 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * date 24/8/2016
+ * @version 1.0 
+ * Class main employee
  */
 public class MainEmployee {
 
     public static void main(String[] args) throws IOException, NumberFormatException {
 
-        EmploySale[] ArrS = new EmploySale[100];
-        EmplyeeProduce[] ArrP = new EmplyeeProduce[100];
-        ManagerEmployee mng = new ManagerEmployee(ArrS, ArrP);
+        try {
+            EmploySale[] ArrS = new EmploySale[100];
+            EmplyeeProduce[] ArrP = new EmplyeeProduce[100];
+            ManagerEmployee mng = new ManagerEmployee(ArrS, ArrP);
 
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        boolean flag = true;
-        while (flag == true) {
-            System.out.println("Do you want Add new employee? y/n");
-            String choise = input.readLine();
-            if (choise.equalsIgnoreCase("n")) {
-                flag = false;
-            } else if (choise.equalsIgnoreCase("y")) {
-                System.out.println("Input your name: ");
-                String name = input.readLine();
-                System.out.println("Input your pay rate: ");
-                double pr = Double.parseDouble(input.readLine());
-                System.out.println("Input num people appendant: ");
-                int npa = Integer.parseInt(input.readLine());
-                System.out.println("Input your Fringe Benefits: ");
-                double fb = Double.parseDouble(input.readLine());
+            BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+            boolean flag = true;
+            while (flag == true) {
+                System.out.println("Do you want Add new employee? y/n");
+                String choise = input.readLine();
+                if (choise.equalsIgnoreCase("n")) {
+                    flag = false;
+                } else if (choise.equalsIgnoreCase("y")) {
+                    //input information of employee
+                    System.out.println("Input your name: ");
+                    String name = input.readLine();
+                    System.out.println("Input your pay rate: ");
+                    double pr = Double.parseDouble(input.readLine());
+                    System.out.println("Input num people appendant: ");
+                    int npa = Integer.parseInt(input.readLine());
+                    System.out.println("Input your Fringe Benefits: ");
+                    double fb = Double.parseDouble(input.readLine());
 
-                System.out.println("Do you want add Employe Sale(1) or Employe Produce(2)");
-                int choiseType = Integer.parseInt(input.readLine());
-                if (choiseType == 1) {
-                    EmploySale newS = mng.inputInfoEmplySale(name, pr, npa, fb);
+                    System.out.println("Do you want add Employe Sale(1) or Employe Produce(2)");
+                    int choiseType = Integer.parseInt(input.readLine());
+                    if (choiseType == 1) {
+                        EmploySale newS = mng.inputInfoEmplySale(name, pr, npa, fb);
                         mng.addEmploySale(newS);
-                        
+
                         mng.outputArrEmploySale();
-                   
-                } else if(choiseType==2){
-                    EmplyeeProduce newP = mng.inputInfoEmplyeeProduce(name, pr, npa, fb);
-                    mng.addEmplyeeProduce(newP);
-                    mng.outputArrEmployProduce();
+
+                    } else if (choiseType == 2) {
+                        EmplyeeProduce newP = mng.inputInfoEmplyeeProduce(name, pr, npa, fb);
+                        mng.addEmplyeeProduce(newP);
+                        mng.outputArrEmployProduce();
+                    } else {
+                        System.out.println("Choise Type Wrong!");
+                    }
                 } else {
-                    System.out.println("Choise Type Wrong!");
+                    System.out.println("Choise wrong");
                 }
-            } else {
-                System.out.println("Choise wrong");
+
             }
-
+        } catch (IOException | NumberFormatException ex) {
+            System.out.println("Error: " + ex.getMessage());
         }
-
     }
 }

@@ -7,7 +7,10 @@ package task1_12;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * Date 24/8/2016
+ * @version 1.0 
+ * Class TextBook include information Text Book
  */
 public class TextBook extends Book{
     int status;

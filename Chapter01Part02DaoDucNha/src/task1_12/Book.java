@@ -78,8 +78,6 @@ public class Book {
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
-
-    
-        
+      
     
 }
