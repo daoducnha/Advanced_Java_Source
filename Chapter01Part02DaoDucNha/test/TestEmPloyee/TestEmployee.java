@@ -68,8 +68,56 @@ public class TestEmployee {
         assertEquals(ac, ex, 0.1);
     }
     
-     @Test
+      @Test
     public void test4() {
+         EmplyeeProduce ep = new EmplyeeProduce(10, 150, 1000000, "abc", 2.5, 2, 200000);
+        double ac = ep.calRealIncome();
+        double ex = 97267500;
+        assertEquals(ac, ex, 0.1);
+    }
+    
+     @Test
+    public void test5() {
+         EmploySale ep = new EmploySale(0, 20, "abc", 2.5, 2, 200000);
+        double ac = ep.calRealIncome();
+        double ex = 3150000;
+        assertEquals(ac, ex, 0.1);
+    }
+    
+     @Test
+    public void test6() {
+         EmploySale ep = new EmploySale(100000, 20, "abc", 2.5, 0, 200000);
+        double ac = ep.calRealIncome();
+        double ex = 5000000;
+        assertEquals(ac, ex, 0.1);
+    }
+    
+     @Test
+    public void test7() {
+          EmplyeeProduce ep = new EmplyeeProduce(150, 150, 1000000, "abc", 2.5, 2, 200000);
+        double ac = ep.calRealIncome();
+        double ex = 5000000;
+        assertEquals(ac, ex, 0.1);
+    }
+    
+     @Test
+    public void test8() {
+          EmplyeeProduce ep = new EmplyeeProduce(0, 150, 100000, "abc", 2.5, 2, 200000);
+        double ac = ep.calRealIncome();
+        double ex = 10856750;
+        assertEquals(ac, ex, 0.1);
+    }
+    
+     @Test
+    public void test9() {
+        EmploySale ep = new EmploySale(10, 20, "abc", 2.5, 2, 200000);
+        double ac = ep.calRealIncome();
+        double ex = 3100000;
+        assertEquals(ac, ex, 0.1);
+    }
+    
+     @Test
+    public void test10() {
          EmplyeeProduce ep = new EmplyeeProduce(10, 150, 1000000, "abc", 2.5, 2, 200000);
         double ac = ep.calRealIncome();
         double ex = 108567500;
