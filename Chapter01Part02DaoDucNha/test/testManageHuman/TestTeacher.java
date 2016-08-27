@@ -12,9 +12,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import task1_10.Teacher;
+
 /**
  *
- * @author NHA
+ * @author Dao Duc Nha
+ * Date 27/08/2016
+ * @version  1.0
+ * Test for calculate salary of teacher
  */
 public class TestTeacher {
     

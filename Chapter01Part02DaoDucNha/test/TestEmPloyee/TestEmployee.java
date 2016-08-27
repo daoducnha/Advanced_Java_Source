@@ -18,7 +18,10 @@ import task1_13.EmplyeeProduce;
 import task1_13.ManagerEmployee;
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * Date 27/08/2016
+ * @version  1.0
+ * Test for calculate real persional incom of employee
  */
 public class TestEmployee {
     
