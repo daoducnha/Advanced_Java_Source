@@ -16,7 +16,10 @@ import java.util.Map;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0 
+ * Date 9/7/2016 
+ * Class MainManageEmployee to Print list employee, search employee, add employee, remove employee
  */
 public class MainManageEmployee {
 

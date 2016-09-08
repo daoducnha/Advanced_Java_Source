@@ -16,7 +16,10 @@ import java.util.TreeMap;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0 
+ * Date 9/7/2016 
+ * Class MainText to output frequency a word in text
  */
 public class MainText {
 
@@ -27,6 +30,10 @@ public class MainText {
         String text = input.readLine();
 
         String[] arrWord = text.split(" ");
+        for (int i = 0; i < arrWord.length; i++) {
+            System.out.println(arrWord[i]);
+        }
+        System.out.println("====================");
         Map<String, Integer> mapWord = new TreeMap<>();
         int i = 0;
         while (i < arrWord.length) {

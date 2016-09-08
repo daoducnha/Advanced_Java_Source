@@ -7,7 +7,10 @@ package task25;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0 
+ * Date 9/7/2016 
+ * Class Employee include information of Employee
  */
 public class Employee implements Comparable<Employee>{
 
