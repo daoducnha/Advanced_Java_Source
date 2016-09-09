@@ -10,7 +10,10 @@ import java.util.Arrays;
 
 /**
  *
- * @author hocvien
+ * @author Dao Duc Nha
+ * Date 9/9/2016
+ * @version 1.0
+ * Class MainPrice use lambda expressions to calculate price of each element of list
  */
 public class MainPrice {
 

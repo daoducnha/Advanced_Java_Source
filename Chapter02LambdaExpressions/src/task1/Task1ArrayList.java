@@ -10,7 +10,10 @@ import java.util.List;
 
 /**
  *
- * @author hocvien
+ * @author Dao Duc Nha
+ * Date 9/9/2016
+ * @version 1.0
+ * Class Task1ArrayList use lambda expressions to output list number
  */
 public class Task1ArrayList {
     public static void main(String[] args) {

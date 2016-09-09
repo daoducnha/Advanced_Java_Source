@@ -7,7 +7,10 @@ package task3;
 
 /**
  *
- * @author hocvien
+ * @author Dao Duc Nha
+ * Date 9/9/2016
+ * @version 1.0
+ * interface Area include method calculate Area of a shape
  */
 public interface Area {
     double calArea(double x1, double x2);

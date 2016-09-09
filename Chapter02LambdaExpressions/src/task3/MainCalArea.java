@@ -11,7 +11,10 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author hocvien
+ * @author Dao Duc Nha
+ * Date 9/9/2016
+ * @version 1.0
+ * Class MainCalArea use lambda expressions to calculate area of circle and retangle
  */
 public class MainCalArea{
 

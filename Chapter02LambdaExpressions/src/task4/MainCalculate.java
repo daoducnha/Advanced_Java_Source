@@ -11,7 +11,10 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author hocvien
+ * @author Dao Duc Nha
+ * Date 9/9/2016
+ * @version 1.0
+ * Class MainCalculate use lambda expressions to calculate Multiplication, Addition, Subtraction, Division of 2 number
  */
 public class MainCalculate {
 

@@ -7,8 +7,12 @@ package task4;
 
 /**
  *
- * @author hocvien
+ * @author Dao Duc Nha
+ * Date 9/9/2016
+ * @version 1.0
+ * interface Area include method calculate operater of 2 number
  */
+
 public interface Operator {
     public double operate(double operand1, double operand2);
 }
