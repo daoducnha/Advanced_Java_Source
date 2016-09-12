@@ -18,19 +18,17 @@ import jdk.nashorn.internal.runtime.options.Option;
 /**
  *
  * @author Dao Duc Nha
- * @version 1.0
- * Date 12/09/2016
- * Class MainStudent to manage list student
+ * @version 1.0 Date 12/09/2016 Class MainStudent to manage list student
  */
 public class MainStudent {
 
     public static void main(String[] args) {
         List<Student> listStudent = new ArrayList<>();
 
-        Student std1 = new Student("Phuong Khuat", 17, 8, 7);
-        Student std2 = new Student("Hanh Nguyen", 18, 8.5, 7.5);
-        Student std3 = new Student("Hoa Huynh", 18, 7.5, 6.5);
-        Student std4 = new Student("Duyen Phan", 20, 7.5, 7.5);
+        Student std1 = new Student("Phuong", "Khuat", 17, 8, 7);
+        Student std2 = new Student("Hanh", "Nguyen", 18, 8.5, 7.5);
+        Student std3 = new Student("Hoa", "Huynh", 18, 7.5, 6.5);
+        Student std4 = new Student("Duyen", "Phan", 20, 7.5, 7.5);
 
         listStudent.add(std4);
         listStudent.add(std3);
@@ -44,9 +42,9 @@ public class MainStudent {
         int countAge = (int) listStudent.stream().filter((Student a) -> a.getAge() >= 18).count();
         System.out.println("Count student have age > 18: " + countAge);
         //count number student hava first name start at 'H'
-        int countH = (int) listStudent.stream().filter((Student a) -> a.getName().startsWith("H")).count();
+        int countH = (int) listStudent.stream().filter((Student a) -> a.getFistName().startsWith("H")).count();
         System.out.println("number student hava first name start at 'H' is :" + countH);
-        Optional<Student> resutl = listStudent.stream().filter((Student a) -> a.getName().startsWith("H")).findFirst();
+        Optional<Student> resutl = listStudent.stream().filter((Student a) -> a.getFistName().startsWith("H")).findFirst();
         System.out.println(resutl);
 
         //statistics the mark Average of list Student
