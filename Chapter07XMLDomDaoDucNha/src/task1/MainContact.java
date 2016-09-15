@@ -64,7 +64,7 @@ public class MainContact {
         } else if (choise == 4) {
             System.out.println("Input name want delete: ");
             String dName = sc.nextLine();
-            //removeChild(, dName);
+            removeChild(dName);
         }
 
     }
@@ -169,18 +169,30 @@ public class MainContact {
         }
     }
 
-    public static void removeChild(Node node, String name ) {
-        if(node == null ){
-            System.out.println("Can not find name contact");
-        }
-        if(node.getNodeName().equalsIgnoreCase(name)){
-            NodeList nodeList = node.getChildNodes();
+    public static void removeChild(String name) {
+
+        String filePath = "src/task1/contact.xml";
+        File xmlFile = new File(filePath);
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder;
+        try {
+            dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(xmlFile);
+            doc.getDocumentElement().normalize();
+
+            NodeList nodeList = doc.getElementsByTagName("contact");
+
             for (int i = 0; i < nodeList.getLength(); i++) {
-                if(nodeList.item(i).getNodeName().equals(name)){
+                Node node = nodeList.item(i);
+                Element eElement = (Element) node;
+                String n = eElement.getElementsByTagName("name").item(i).getTextContent();
+                if (n.equalsIgnoreCase(name)) {
                     node.getParentNode().removeChild(node);
-                    System.out.println("remove contact susscess!!!");
+                    System.out.println("remove ss");
                 }
             }
+        } catch (Exception e) {
         }
+
     }
 }
