@@ -3,9 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package task27;
+package task1;
 
 import java.util.List;
+import org.w3c.dom.*;
+import javax.xml.parsers.*;
+import java.io.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 /**
  *
@@ -50,5 +56,7 @@ public class Contact implements Comparable<Contact> {
     public int compareTo(Contact o) {
         return this.name.compareTo(o.name);
     }
+    
+    
 
 }
