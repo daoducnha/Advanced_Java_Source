@@ -33,16 +33,26 @@ public class MainContact {
 
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-
+        List<Contact> l = new ArrayList<>();
         System.out.println("1. Add a contact into contact.xml");
         System.out.println("2. View List contact");
+        System.out.println("3. Search contact by name");
+        System.out.println("4. Delete contact by name");
         System.out.println("Please input you choise: ");
         int choise = Integer.parseInt(input.readLine());
         if (choise == 1) {
             addContact();
-        }else if(choise ==2){
-            printList();
-            
+        } else if (choise == 2) {
+            l = getListContacts();
+            for (Contact contact : l) {
+                System.out.println(contact.toString());
+            }
+        }else if(choise == 3){
+            System.out.println("Input name want search: ");
+            String search = input.readLine();
+            l = getListContacts();
+            Contact c = searchContact(search, l);
+            System.out.println(c.toString());
         }
 
     }
@@ -54,8 +64,8 @@ public class MainContact {
             String n = sc.nextLine();
             System.out.println("Input Phone number: ");
             String phone = sc.nextLine();
-            
-            Contact c = new Contact(n,phone);
+
+            Contact c = new Contact(n, phone);
 
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -97,37 +107,50 @@ public class MainContact {
         } catch (Exception e) {
         }
     }
+
     public static Contact getContact(Node node) {
-        Contact c =new Contact();
-        if(node.getNodeType()==node.ELEMENT_NODE){
-        Element element = (Element) node;
-        c.setName(element.getElementsByTagName("name").item(0).getChildNodes().item(0).getNodeValue());
-        c.setPhoneNumber(element.getElementsByTagName("phoneNumber").item(0).getChildNodes().item(0).getNodeValue());        
+        Contact c = new Contact();
+        if (node.getNodeType() == node.ELEMENT_NODE) {
+            Element element = (Element) node;
+            c.setName(element.getElementsByTagName("name").item(0).getChildNodes().item(0).getNodeValue());
+            c.setPhoneNumber(element.getElementsByTagName("phoneNumber").item(0).getChildNodes().item(0).getNodeValue());
         }
         return c;
     }
-    public static void printList() {
+
+    public static List<Contact> getListContacts() {
         String filePath = "src/task1/contact.xml";
-        File xmlFile =new File(filePath);
+        File xmlFile = new File(filePath);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder ;
+        DocumentBuilder dBuilder;
         try {
             dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
             doc.getDocumentElement().normalize();
-            
-            NodeList nodeList= doc.getElementsByTagName("contact");
-            
+
+            NodeList nodeList = doc.getElementsByTagName("contact");
+
             List<Contact> listContacts = new ArrayList<>();
-            
+
             for (int i = 0; i < nodeList.getLength(); i++) {
                 listContacts.add(getContact(nodeList.item(i)));
             }
-            for (Contact listContact : listContacts) {
-                System.out.println(listContact.toString());
-            }
+            return listContacts;
         } catch (Exception e) {
         }
+        return null;
+    }
+
+    public static Contact searchContact(String name, List<Contact> l) {
+        for (Contact contact : l) {
+            if (contact.getName().equalsIgnoreCase(name)) {
+                return contact;
+            }
+        }
+        return null;
     }
     
+    public static boolean deleteContact(String name) {
+        return true;
+    }
 }
