@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Scanner;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -31,7 +32,8 @@ import org.w3c.dom.NodeList;
  */
 public class MainContact {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParserConfigurationException {
+        Scanner sc = new Scanner(System.in);
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         List<Contact> l = new ArrayList<>();
         System.out.println("1. Add a contact into contact.xml");
@@ -41,32 +43,34 @@ public class MainContact {
         System.out.println("Please input you choise: ");
         int choise = Integer.parseInt(input.readLine());
         if (choise == 1) {
-            addContact();
+
+            System.out.println("Input name: ");
+            String n = sc.nextLine();
+            System.out.println("Input Phone number: ");
+            String phone = sc.nextLine();
+            Contact c = new Contact(n, phone);
+            addContact(c);
         } else if (choise == 2) {
             l = getListContacts();
             for (Contact contact : l) {
                 System.out.println(contact.toString());
             }
-        }else if(choise == 3){
+        } else if (choise == 3) {
             System.out.println("Input name want search: ");
             String search = input.readLine();
             l = getListContacts();
             Contact c = searchContact(search, l);
             System.out.println(c.toString());
+        } else if (choise == 4) {
+            System.out.println("Input name want delete: ");
+            String dName = sc.nextLine();
+            //removeChild(, dName);
         }
 
     }
 
-    public static void addContact() {
+    public static void addContact(Contact c) {
         try {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Input name: ");
-            String n = sc.nextLine();
-            System.out.println("Input Phone number: ");
-            String phone = sc.nextLine();
-
-            Contact c = new Contact(n, phone);
-
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
@@ -149,8 +153,34 @@ public class MainContact {
         }
         return null;
     }
-    
-    public static boolean deleteContact(String name) {
-        return true;
+
+    public static boolean deleteContact(String name, List<Contact> l) {
+        Contact c = new Contact();
+        for (Contact contact : l) {
+            if (contact.getName().equalsIgnoreCase(name)) {
+                c = contact;
+            }
+        }
+        if (c != null) {
+            l.remove(c);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static void removeChild(Node node, String name ) {
+        if(node == null ){
+            System.out.println("Can not find name contact");
+        }
+        if(node.getNodeName().equalsIgnoreCase(name)){
+            NodeList nodeList = node.getChildNodes();
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                if(nodeList.item(i).getNodeName().equals(name)){
+                    node.getParentNode().removeChild(node);
+                    System.out.println("remove contact susscess!!!");
+                }
+            }
+        }
     }
 }

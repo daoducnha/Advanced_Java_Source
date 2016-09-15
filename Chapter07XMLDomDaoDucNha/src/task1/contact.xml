@@ -7,4 +7,48 @@
         <name>ha</name>
         <phoneNumber>123098776</phoneNumber>
     </contact>
-<contact><name>nga</name><phoneNumber>123321213</phoneNumber></contact></contacts>
+    <contact>
+        <name>nga</name>
+        <phoneNumber>123321213</phoneNumber>
+    </contact>
+    <contact>
+        <name>ha</name>
+        <phoneNumber>123098776</phoneNumber>
+    </contact>
+    <contact>
+        <name>nga</name>
+        <phoneNumber>123321213</phoneNumber>
+    </contact>
+    <contact>
+        <name>nhan</name>
+        <phoneNumber>213123123</phoneNumber>
+    </contact>
+    <contact>
+        <name>hi</name>
+        <phoneNumber>12312</phoneNumber>
+    </contact>
+    <contact>
+        <name>nha</name>
+        <phoneNumber>123456</phoneNumber>
+    </contact>
+    <contact>
+        <name>ha</name>
+        <phoneNumber>123098776</phoneNumber>
+    </contact>
+    <contact>
+        <name>nga</name>
+        <phoneNumber>123321213</phoneNumber>
+    </contact>
+    <contact>
+        <name>ha</name>
+        <phoneNumber>123098776</phoneNumber>
+    </contact>
+    <contact>
+        <name>nga</name>
+        <phoneNumber>123321213</phoneNumber>
+    </contact>
+    <contact>
+        <name>nhan</name>
+        <phoneNumber>213123123</phoneNumber>
+    </contact>
+</contacts>
