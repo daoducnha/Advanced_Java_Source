@@ -7,7 +7,9 @@ package task3;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 9/2016
  */
 public class Student {
     String nama;

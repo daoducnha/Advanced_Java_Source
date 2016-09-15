@@ -21,7 +21,9 @@ import java.text.DecimalFormat;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 9/2016
  */
 public class MainStudent {
 
@@ -40,6 +42,8 @@ public class MainStudent {
         System.out.println("Please input your choise:");
         int choise = Integer.parseInt(input.readLine());
         if (choise == 1) {
+            
+            //read file and cal avg of mark
             try (DataInputStream in = new DataInputStream(new BufferedInputStream(new FileInputStream("src/task3/tongketnamhoc.txt")))) {
                 while (true) {
                     name = in.readUTF();
@@ -57,6 +61,8 @@ public class MainStudent {
                 System.out.println("Error: " + e.getMessage());
             }
         } else if (choise == 2) {
+            
+            //add new student and write into file 
             System.out.println("Input name: ");
             name = input.readLine();
             System.out.println("Input grade: ");
@@ -75,6 +81,7 @@ public class MainStudent {
                 System.out.println("Error: " + e.getMessage());
             }
         } else if (choise == 3) {
+            //statistics list student by grade
             String grade10 = "";
             String grade11 = "";
             String grade12 = "";
@@ -106,7 +113,8 @@ public class MainStudent {
             System.out.println("Grade 11: \n" + grade11);
             System.out.println("Grade 12: \n" + grade12);
         } else if (choise == 4) {
-
+            //statistics number student Excellent, good, Average And Average Below, weak
+            
             int numExcellent = 0;
             int numGood = 0;
             int numAverageAndBelow = 0;
@@ -145,6 +153,8 @@ public class MainStudent {
             System.out.println("Number Student Average and Below Average is: " + numAverageAndBelow);
             System.out.println("Number Student Weak is: " + numWeak);
         } else if (choise == 5) {
+            
+            //cal avg mark of each grade
             int numgGrade10 = 0;
             double avgGrade10 = 0;
             int numgGrade11 = 0;

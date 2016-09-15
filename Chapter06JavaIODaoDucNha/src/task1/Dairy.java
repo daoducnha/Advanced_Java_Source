@@ -23,7 +23,9 @@ import java.util.zip.InflaterInputStream;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 9/2016
  */
 public class Dairy {
 
