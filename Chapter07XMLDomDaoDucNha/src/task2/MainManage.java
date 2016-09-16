@@ -206,16 +206,7 @@ public class MainManage {
         for (E element : l) {
             System.out.println(element.toString());
         }
-    }
-
-    //View List Emloyee of department
-    public static void viewListEmployeeOfDepartment(List<Employee> lstEmployees, String idDepart) {
-        for (Employee employee : lstEmployees) {
-            if (employee.getIdDepartment().equalsIgnoreCase(idDepart)) {
-                System.out.println(employee.toString());
-            }
-        }
-    }
+    }   
 
     //add an employee to xml file
     public static void addEmployeeToXMLFile(Employee ee) {
