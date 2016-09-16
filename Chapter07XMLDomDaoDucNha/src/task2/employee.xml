@@ -22,4 +22,31 @@ and open the template in the editor.
         <address>quang tri</address>
         <idDepartment>1</idDepartment>
     </employee>
+    <employee>
+        <id>3</id>
+        <name>thang</name>
+        <sex>1</sex>
+        <dateOfBirth>12-12-1993</dateOfBirth>
+        <salary>8000000.0</salary>
+        <address>lam dong</address>
+        <idDepartment>1</idDepartment>
+    </employee>
+    <employee>
+        <id>324</id>
+        <name>4321</name>
+        <sex>42314</sex>
+        <dateOfBirth>1234</dateOfBirth>
+        <salary>2134.0</salary>
+        <address>1234</address>
+        <idDepartment>2134</idDepartment>
+    </employee>
+    <employee>
+        <id>eqwr</id>
+        <name>weqr</name>
+        <sex>123</sex>
+        <dateOfBirth>432</dateOfBirth>
+        <salary>4312.0</salary>
+        <address>213</address>
+        <idDepartment>432</idDepartment>
+    </employee>
 </department>
