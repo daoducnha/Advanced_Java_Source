@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+--><department>
+    <employee>
+        <id>1</id>
+        <name>Nguyen Van A</name>
+        <sex>1</sex>
+        <dateOfBirth>1973-08-31</dateOfBirth>
+        <salary>5200000</salary>
+        <address>phuong 10, quan go vap</address>
+        <idDepartment>1</idDepartment>
+    </employee>
+    
+    <employee>
+        <id>02</id>
+        <name>nha</name>
+        <sex>1</sex>
+        <dateOfBirth>29-04-1993</dateOfBirth>
+        <salary>5000000.0</salary>
+        <address>quang tri</address>
+        <idDepartment>1</idDepartment>
+    </employee>
+</department>

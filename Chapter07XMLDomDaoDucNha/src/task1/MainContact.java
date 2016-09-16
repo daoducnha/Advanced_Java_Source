@@ -28,7 +28,9 @@ import org.w3c.dom.NodeList;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 19-9-2016
  */
 public class MainContact {
 
@@ -69,6 +71,7 @@ public class MainContact {
 
     }
 
+    //Add a concat to concat.xml
     public static void addContact(Contact c) {
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -112,6 +115,7 @@ public class MainContact {
         }
     }
 
+    //get a concat from contact.xml
     public static Contact getContact(Node node) {
         Contact c = new Contact();
         if (node.getNodeType() == node.ELEMENT_NODE) {
@@ -122,6 +126,7 @@ public class MainContact {
         return c;
     }
 
+    //get list contact from contact.txt
     public static List<Contact> getListContacts() {
         String filePath = "src/task1/contact.xml";
         File xmlFile = new File(filePath);
@@ -145,6 +150,7 @@ public class MainContact {
         return null;
     }
 
+    //search a contact by name
     public static Contact searchContact(String name, List<Contact> l) {
         for (Contact contact : l) {
             if (contact.getName().equalsIgnoreCase(name)) {
@@ -154,21 +160,8 @@ public class MainContact {
         return null;
     }
 
-    public static boolean deleteContact(String name, List<Contact> l) {
-        Contact c = new Contact();
-        for (Contact contact : l) {
-            if (contact.getName().equalsIgnoreCase(name)) {
-                c = contact;
-            }
-        }
-        if (c != null) {
-            l.remove(c);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
+    //delete a contact by name
+    
     public static void removeChild(String name) {
 
         String filePath = "src/task1/contact.xml";
@@ -181,18 +174,29 @@ public class MainContact {
             doc.getDocumentElement().normalize();
 
             NodeList nodeList = doc.getElementsByTagName("contact");
+            Node dNode = null;
+            if (nodeList != null) {
+                for (int i = 0; i < nodeList.getLength(); i++) {
+                    Node node = nodeList.item(i);
+                    Element e = (Element) node;
+                    String n = e.getElementsByTagName("name").item(0).getTextContent();
+                    String p = e.getElementsByTagName("phoneNumber").item(0).getTextContent();
 
-            for (int i = 0; i < nodeList.getLength(); i++) {
-                Node node = nodeList.item(i);
-                Element eElement = (Element) node;
-                String n = eElement.getElementsByTagName("name").item(i).getTextContent();
-                if (n.equalsIgnoreCase(name)) {
-                    node.getParentNode().removeChild(node);
-                    System.out.println("remove ss");
+                    if (n.equalsIgnoreCase(name)) {
+                        dNode = nodeList.item(i);
+                    }
                 }
+
             }
+            dNode.getParentNode().removeChild(dNode);
+            System.out.println("Remove susscesss");
+
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File(filePath));
+            transformer.transform(source, result);
         } catch (Exception e) {
         }
-
     }
 }

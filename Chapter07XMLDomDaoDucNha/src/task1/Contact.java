@@ -15,7 +15,9 @@ import javax.xml.transform.stream.StreamResult;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 19-9-2016
  */
 public class Contact implements Comparable<Contact> {
 
