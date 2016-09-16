@@ -7,7 +7,10 @@ package task4;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 9-2016
+ * Class Category include information of a category
  */
 public class Category {
     int id;

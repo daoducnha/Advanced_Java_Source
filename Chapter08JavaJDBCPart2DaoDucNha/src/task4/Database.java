@@ -11,7 +11,10 @@ import java.sql.SQLException;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 9-2016
+ * Class Database to manager connect database
  */
 public class Database {
     private static final String JDBC_URL = 

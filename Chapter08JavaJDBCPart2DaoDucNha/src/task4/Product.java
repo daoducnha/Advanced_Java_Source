@@ -10,7 +10,10 @@ import java.util.Date;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 9-2016
+ * Class Product include information a product
  */
 public class Product {
 
