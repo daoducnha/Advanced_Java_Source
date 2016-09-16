@@ -49,6 +49,10 @@ public class MainUser {
                     String newpasswd1 = input.readLine();
                     User user1 = new User(newuser1, newpasswd1);
                     userController.addUser(user1);
+                    break;
+                case 3:
+                    flag = false;
+                    break;
             }
         }
 
