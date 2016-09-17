@@ -12,7 +12,10 @@ import java.sql.SQLException;
 
 /**
  *
- * @author NHA
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 17-09-2016
+ * Class MainProduct to manager Product
  */
 public class MainProduct {
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException{

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package task4;
+package task4ToTask6;
 
 import com.mysql.jdbc.Connection;
 import java.io.BufferedReader;

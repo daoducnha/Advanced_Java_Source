@@ -11,7 +11,10 @@ import java.sql.SQLException;
 
 /**
  *
- * @author NHA
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 17-09-2016
+ * Class Database to manager connet Database
  */
 public class Database {
 

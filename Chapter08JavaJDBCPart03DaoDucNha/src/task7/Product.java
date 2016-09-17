@@ -7,9 +7,13 @@ package task7;
 
 import java.sql.Date;
 
+
 /**
  *
- * @author NHA
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 17-09-2016
+ * Class Product include information of product
  */
 public class Product {
     int id;
