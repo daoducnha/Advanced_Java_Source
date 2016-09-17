@@ -17,12 +17,16 @@ import java.util.Date;
 
 /**
  *
- * @author NHA
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 17-09-2016
+ * Class ProductController to manage product from database
  */
 public class ProductController {
 
     Database db = new Database();
 
+    //transaction 1 include add a new product, update a product in table product, delete a product
     public void transection1() throws SQLException, ClassNotFoundException {
         Connection conn = null;
         try {
@@ -49,6 +53,7 @@ public class ProductController {
         }
     }
 
+    //transaction 1 include add a new product, update a product in table product, delete a product
     public void transection2() throws SQLException , IOException{
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         Connection conn = null;
@@ -82,6 +87,7 @@ public class ProductController {
         }
     }
     
+    //transaction 1 include add a new product, update a product in table product, delete a product
     public void transection3() throws SQLException, ClassNotFoundException {
         Connection conn = null;
         try {
