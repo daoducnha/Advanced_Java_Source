@@ -31,6 +31,7 @@ public class Product {
         this.categoryId = categoryId;
     }
 
+    
     public Product() {
     }
 

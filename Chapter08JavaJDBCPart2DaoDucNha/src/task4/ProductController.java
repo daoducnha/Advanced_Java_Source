@@ -21,8 +21,7 @@ import java.util.stream.Collectors;
  *
  * @author Dao Duc Nha
  * @version 1.0
- * @since 9-2016
- * Class ProductController to manager product
+ * @since 9-2016 Class ProductController to manager product
  */
 public class ProductController {
 
@@ -124,6 +123,7 @@ public class ProductController {
         }
         return null;
     }
+
     //delete a product by id
     public void deleteProduct(int id) throws SQLException, ClassNotFoundException {
         try (Connection conn = db.connect()) {
@@ -180,4 +180,6 @@ public class ProductController {
             System.out.println("Error: " + e.getMessage());
         }
     }
+
+    
 }
