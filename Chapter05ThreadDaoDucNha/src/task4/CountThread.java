@@ -5,41 +5,42 @@
  */
 package task4;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
- * @author hv
+ * @author Dao duc nha
+ * @version 1.0
+ * @since 9-2016
  */
-public class CountThread extends Thread {
+public class CountThread extends Thread{
+    static int count = 0;
 
-    String threadName;
-    PrintCount pc;
-    int count = 0;
-
-    public CountThread(String threadName, PrintCount pc) {
-        this.threadName = threadName;
-        this.pc = pc;
+    String nameThread;
+    public CountThread(String nameThread) {
+        
+        this.nameThread = nameThread;
     }
 
     
-    public String getThreadName() {
-        return threadName;
+
+    public String getNameThread() {
+        return nameThread;
     }
 
-    public void setThreadName(String threadName) {
-        this.threadName = threadName;
+    public void setNameThread(String nameThread) {
+        this.nameThread = nameThread;
     }
-
-    @Override
-    public void run() {
-        System.out.println("Thread: " + threadName);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException ex) {
-            System.out.println("Erro: " + ex.getMessage());
+    
+    
+    public int nextCount(){
+        synchronized (this){
+            return count++;
         }
     }
-
+    @Override
+    public void run(){
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Thread :"+this.nameThread+" count: "+this.nextCount());
+        }
+        
+    }
 }
