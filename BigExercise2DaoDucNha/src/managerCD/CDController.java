@@ -282,5 +282,18 @@ public class CDController {
         }
     }
     
+    public CD getCD(Node node){
+        CD cd1 = new CD();
+         if (node.getNodeType() == Node.ELEMENT_NODE) {
+              Element element = (Element) node;
+              int id = Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent());
+              String name = element.getElementsByTagName("name").item(0).getTextContent();
+              String singer = element.getElementsByTagName("singer").item(0).getTextContent();
+              
+         }
+         return cd1;
+    }
+    public void printListCdFromXMLFile(){
     
+    }
 }

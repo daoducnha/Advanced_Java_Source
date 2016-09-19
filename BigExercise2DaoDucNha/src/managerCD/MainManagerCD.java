@@ -107,6 +107,31 @@ public class MainManagerCD {
                         }
                     }
                     break;
+                case 7:
+                    boolean flagXML = true;
+                    while (flagXML==true) {                        
+                        System.out.println("1. Write list CD from database to XML file");
+                        System.out.println("2. Read list Cd from XML file");
+                        System.out.println("3. Exit");
+                        int choiseXML = Integer.parseInt(input.readLine());
+                        
+                        switch (choiseXML){
+                            case 1:
+                                listCds = cDController.getListCD();
+                                for (int i = 0; i < listCds.size(); i++) {
+                                    cDController.addCDToXMLFile(listCds.get(i));
+                                }
+                                System.out.println("add xml file susscess!!!");
+                                break;
+                            case 2:
+                                
+                                break;
+                            case 3: 
+                                flagXML = false;
+                                break;
+                        }
+                    }
+                    break;
                 default:
                     System.out.println("Input Choise Wrong");
                     break;
