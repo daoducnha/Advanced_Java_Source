@@ -31,7 +31,8 @@ public class MainManagerCD {
             System.out.println("3. Search CD by name");
             System.out.println("4. Update CD by ID");
             System.out.println("5. Remove CD by ID");
-            System.out.println("6. Exit");
+            System.out.println("6. Work with I/O File");
+            System.out.println("7. Work with XML File");
             System.out.println("Please input your choise: ");
             int choise = Integer.parseInt(input.readLine());
             System.out.println("=========================");
@@ -73,9 +74,7 @@ public class MainManagerCD {
                         System.out.println(element.toString());
                     }
                     System.out.println("========================");
-                    
-                   
-                    
+
                     System.out.println("Please input ID CD want remove: ");
                     int idRemove = Integer.parseInt(input.readLine());
                     while (cDController.searchCDByID(idRemove) == false) {
@@ -85,7 +84,28 @@ public class MainManagerCD {
                     cDController.removeCD(idRemove);
                     break;
                 case 6:
-                    flag = false;
+                    boolean flagIO = true;
+                    while (flagIO == true) {
+                        System.out.println("1. Write List CD from database to cd.txt");
+                        System.out.println("2. Read file cd.txt");
+                        System.out.println("3. Exit");
+                        System.out.println("Please input your choise: ");
+                        int choiseIO = Integer.parseInt(input.readLine());
+                        switch (choiseIO) {
+                            case 1:
+                                listCds = cDController.getListCD();
+                                cDController.addCDToFile();
+                                break;
+                            case 2:
+                                cDController.readCDtoFile();
+                                System.out.println("============================");
+                                break;
+                            case 3:
+                                flagIO = false;
+                            default:
+                                System.out.println("Choise wrong!!!");
+                        }
+                    }
                     break;
                 default:
                     System.out.println("Input Choise Wrong");

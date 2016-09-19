@@ -7,9 +7,14 @@ package managerCD;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,27 +22,37 @@ import java.util.List;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 19-9-2016 Class CDController to manager list cd
  */
 public class CDController {
 
     List<CD> listCds = new ArrayList<>();
     Database db = new Database();
 
-    public CD createNewCD() throws IOException {
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Input Name CD: ");
-        String name = input.readLine();
-        System.out.println("Input Name Singer: ");
-        String singer = input.readLine();
-        System.out.println("Input number song of CD: ");
-        int numberSongs = Integer.parseInt(input.readLine());
-        System.out.println("Input price of CD: ");
-        double price = Double.parseDouble(input.readLine());
-        CD nCd = new CD(name, singer, numberSongs, price);
+    //Create new cd output a new cd
+    public CD createNewCD() throws IOException, NumberFormatException {
+        CD nCd = new CD();
+        try {
+            BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Input Name CD: ");
+            String name = input.readLine();
+            System.out.println("Input Name Singer: ");
+            String singer = input.readLine();
+            System.out.println("Input number song of CD: ");
+            int numberSongs = Integer.parseInt(input.readLine());
+            System.out.println("Input price of CD: ");
+            double price = Double.parseDouble(input.readLine());
+            nCd = new CD(name, singer, numberSongs, price);
+            return nCd;
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
         return nCd;
     }
 
+    //Add a cd to SQL file
     public void addNewCD(CD c) throws SQLException, ClassNotFoundException {
         try (Connection conn = db.connect()) {
             String sql = "insert into cd values (null, '" + c.getName()
@@ -51,6 +66,7 @@ public class CDController {
         }
     }
 
+    //return list cd from sql file
     public List<CD> getListCD() throws SQLException, ClassNotFoundException {
         List<CD> lsCd = null;
         try (Connection conn = db.connect()) {
@@ -75,6 +91,7 @@ public class CDController {
         return lsCd;
     }
 
+    //Search cd by name and output list cd have name like
     public void searchCD(String name) throws IOException, NumberFormatException, SQLException, ClassNotFoundException {
         List<CD> lCDs;
         try (Connection conn = db.connect()) {
@@ -98,7 +115,8 @@ public class CDController {
         }
     }
 
-    public boolean searchCDByID(int id) {
+    //check list has id want search, return true if has, else return false
+    public boolean searchCDByID(int id) throws SQLException, ClassNotFoundException {
         List<Integer> listID = null;
         try (Connection conn = db.connect()) {
             String sql = "select * from cd";
@@ -114,12 +132,13 @@ public class CDController {
             } else {
                 return false;
             }
-        } catch (Exception e) {
+        } catch (SQLException | ClassNotFoundException e) {
         }
         return false;
     }
 
-    public void updateCD(int id) throws IOException {
+    //update number song and price of CD by id
+    public void updateCD(int id) throws IOException, SQLException, ClassNotFoundException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         try (Connection conn = db.connect()) {
 
@@ -132,11 +151,12 @@ public class CDController {
             java.sql.PreparedStatement statement = conn.prepareStatement(sql);
             statement.execute();
             System.out.println("Update susscess!!!");
-        } catch (Exception e) {
+        } catch (IOException | SQLException | ClassNotFoundException e) {
             System.out.println("error: " + e.getMessage());
         }
     }
 
+    //remove  a CD by id
     public void removeCD(int id) throws SQLException, ClassNotFoundException {
         try (Connection conn = db.connect()) {
             String sql = "delete from cd where id = " + id;
@@ -148,12 +168,47 @@ public class CDController {
         }
     }
 
+    //output list cd in database
     public void printListCD() throws SQLException, ClassNotFoundException {
         try (Connection conn = db.connect()) {
             List<CD> l = this.getListCD();
-            l.stream().forEach((CD c)->System.out.println(c.toString()));
-        } catch (Exception e) {
+            l.stream().forEach((CD c) -> System.out.println(c.toString()));
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
         }
+    }
 
+    public void addCDToFile() throws IOException, SQLException, ClassNotFoundException {
+        try (Connection conn = db.connect()) {
+            List<CD> list = this.getListCD();
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/managerCD/cd.txt"));
+            out.writeInt(list.size());
+
+            for (CD element : list) {
+                out.writeObject(element);
+                out.flush();
+            }
+            out.reset();
+            out.close();
+            System.out.println("Add List Cd from database susscess!!!");
+        } catch (IOException | SQLException | ClassNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+    
+    public void readCDtoFile()throws IOException, ClassNotFoundException{
+        
+        List<CD> l = new ArrayList<>();
+        FileInputStream file = new FileInputStream("src/managerCD/cd.txt");
+        if(file.available()!=0){
+            ObjectInputStream in = new ObjectInputStream(file);
+            int size = in.readInt();
+            
+            for (int i = 0; i < size; i++) {
+                l.add((CD)in.readObject());
+            }
+            in.close();
+            l.stream().forEach((CD cd)->System.out.println(cd.toString()));
+        }
     }
 }
