@@ -11,6 +11,8 @@ import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -18,7 +20,7 @@ import java.util.List;
  */
 public class MainManagerCD {
 
-    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException, ParserConfigurationException, SAXException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
         CDController cDController = new CDController();
@@ -26,6 +28,7 @@ public class MainManagerCD {
         boolean flag = true;
 
         while (flag == true) {
+            System.out.println("==========================");
             System.out.println("1. View list CD");
             System.out.println("2. Add a new CD");
             System.out.println("3. Search CD by name");
@@ -33,6 +36,7 @@ public class MainManagerCD {
             System.out.println("5. Remove CD by ID");
             System.out.println("6. Work with I/O File");
             System.out.println("7. Work with XML File");
+            System.out.println("8. Exit");
             System.out.println("Please input your choise: ");
             int choise = Integer.parseInt(input.readLine());
             System.out.println("=========================");
@@ -91,6 +95,7 @@ public class MainManagerCD {
                         System.out.println("3. Exit");
                         System.out.println("Please input your choise: ");
                         int choiseIO = Integer.parseInt(input.readLine());
+                        System.out.println("====================================");
                         switch (choiseIO) {
                             case 1:
                                 listCds = cDController.getListCD();
@@ -114,23 +119,24 @@ public class MainManagerCD {
                         System.out.println("2. Read list Cd from XML file");
                         System.out.println("3. Exit");
                         int choiseXML = Integer.parseInt(input.readLine());
-                        
+                        System.out.println("==============================");
                         switch (choiseXML){
                             case 1:
-                                listCds = cDController.getListCD();
-                                for (int i = 0; i < listCds.size(); i++) {
-                                    cDController.addCDToXMLFile(listCds.get(i));
-                                }
+                                cDController.addCDToXMLFile();
                                 System.out.println("add xml file susscess!!!");
                                 break;
                             case 2:
-                                
+                                List<CD> listCDxml = cDController.printListCdFromXMLFile();
+                                listCDxml.stream().forEach((CD cdd)->System.out.println(cdd.toString()));
                                 break;
                             case 3: 
                                 flagXML = false;
                                 break;
                         }
                     }
+                    break;
+                case 8:
+                    flag = false;
                     break;
                 default:
                     System.out.println("Input Choise Wrong");

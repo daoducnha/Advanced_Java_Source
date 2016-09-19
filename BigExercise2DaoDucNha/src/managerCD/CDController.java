@@ -25,6 +25,7 @@ import java.io.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -223,77 +224,106 @@ public class CDController {
         }
     }
 
-    public void addCDToXMLFile(CD ncd) throws IOException, SQLException, ClassNotFoundException {
+    public void addCDToXMLFile() throws IOException, SQLException, ClassNotFoundException {
         try (Connection conn = db.connect()) {
             listCds = this.getListCD();
             try {
                 DocumentBuilderFactory docfFactory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder docBuilder = docfFactory.newDocumentBuilder();
                 Document doc = docBuilder.newDocument();
-                
+
                 Element rootElement;
                 String filePath = "src/managerCD/cd.xml";
                 File xmlFile = new File(filePath);
-                
-                if(xmlFile.isFile()){
+
+                if (xmlFile.isFile()) {
                     doc = docBuilder.parse(xmlFile);
                     doc.getDocumentElement().normalize();
-                    rootElement = doc.getDocumentElement();                    
-                }else{
+                    rootElement = doc.getDocumentElement();
+
+                } else {
                     rootElement = doc.createElement("CDs");
                     doc.appendChild(rootElement);
                 }
-                
-                Element cd = doc.createElement("cd");
-                rootElement.appendChild(cd);
-                
-                Element id = doc.createElement("id");
-                id.appendChild(doc.createTextNode(Integer.toString(ncd.getId())));
-                cd.appendChild(id);
-                
-                Element name = doc.createElement("name");
-                name.appendChild(doc.createTextNode(ncd.getName()));
-                cd.appendChild(name);
-                
-                Element singer = doc.createElement("singer");
-                singer.appendChild(doc.createTextNode(ncd.getSinger()));
-                cd.appendChild(singer);
-                
-                Element numberSongs = doc.createElement("numbersongs");
-                numberSongs.appendChild(doc.createTextNode(Integer.toString(ncd.getNumberSongs())));
-                cd.appendChild(numberSongs);
-                
-                Element price = doc.createElement("price");
-                price.appendChild(doc.createTextNode(Double.toString(ncd.getPrice())));
-                cd.appendChild(price);
-                
-                TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
 
-            DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(filePath));
-            transformer.transform(source, result);
-            System.out.println("Add CD to XML File is sussess!!!");
-                
+                while (rootElement.hasChildNodes()) {
+                    rootElement.removeChild(rootElement.getFirstChild());
+                }
+
+                for (int i = 0; i < listCds.size(); i++) {
+
+                    Element cd = doc.createElement("cd");
+                    rootElement.appendChild(cd);
+
+                    Element id = doc.createElement("id");
+                    id.appendChild(doc.createTextNode(Integer.toString(listCds.get(i).getId())));
+                    cd.appendChild(id);
+
+                    Element name = doc.createElement("name");
+                    name.appendChild(doc.createTextNode(listCds.get(i).getName()));
+                    cd.appendChild(name);
+
+                    Element singer = doc.createElement("singer");
+                    singer.appendChild(doc.createTextNode(listCds.get(i).getSinger()));
+                    cd.appendChild(singer);
+
+                    Element numberSongs = doc.createElement("numbersongs");
+                    numberSongs.appendChild(doc.createTextNode(Integer.toString(listCds.get(i).getNumberSongs())));
+                    cd.appendChild(numberSongs);
+
+                    Element price = doc.createElement("price");
+                    price.appendChild(doc.createTextNode(Double.toString(listCds.get(i).getPrice())));
+                    cd.appendChild(price);
+                }
+
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer = transformerFactory.newTransformer();
+
+                DOMSource source = new DOMSource(doc);
+                StreamResult result = new StreamResult(new File(filePath));
+                transformer.transform(source, result);
+                System.out.println("Add CD to XML File is sussess!!!");
+
             } catch (Exception e) {
             }
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println("Error: " + ex.getMessage());
         }
     }
-    
-    public CD getCD(Node node){
+
+    public CD getCD(Node node) {
         CD cd1 = new CD();
-         if (node.getNodeType() == Node.ELEMENT_NODE) {
-              Element element = (Element) node;
-              int id = Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent());
-              String name = element.getElementsByTagName("name").item(0).getTextContent();
-              String singer = element.getElementsByTagName("singer").item(0).getTextContent();
-              
-         }
-         return cd1;
+        if (node.getNodeType() == Node.ELEMENT_NODE) {
+            Element element = (Element) node;
+            int id = Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent());
+            String name = element.getElementsByTagName("name").item(0).getTextContent();
+            String singer = element.getElementsByTagName("singer").item(0).getTextContent();
+            int numbersongs = Integer.parseInt(element.getElementsByTagName("numbersongs").item(0).getTextContent());
+            double price = Double.parseDouble(element.getElementsByTagName("price").item(0).getTextContent());
+            cd1 = new CD(id, name, singer, numbersongs, price);
+        }
+        return cd1;
     }
-    public void printListCdFromXMLFile(){
-    
+
+    public List<CD> printListCdFromXMLFile() throws IOException, ParserConfigurationException, SAXException {
+        String filePath = "src/managerCD/cd.xml";
+        File file = new File(filePath);
+        List<CD> listcd = null;
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder;
+        try {
+            docBuilder = docFactory.newDocumentBuilder();
+            org.w3c.dom.Document doc = docBuilder.parse(file);
+            doc.getDocumentElement().normalize();
+
+            NodeList nodeList = doc.getElementsByTagName("cd");
+            listcd = new ArrayList<>();
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                listcd.add(getCD(nodeList.item(i)));
+            }
+        } catch (IOException | ParserConfigurationException | SAXException e) {
+            System.out.println("Error:" + e.getMessage());
+        }
+        return listcd;
     }
 }
