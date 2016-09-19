@@ -19,6 +19,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.w3c.dom.*;
+import javax.xml.parsers.*;
+import java.io.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 /**
  *
@@ -178,6 +184,7 @@ public class CDController {
         }
     }
 
+    //add list cd from database to file cd.txt
     public void addCDToFile() throws IOException, SQLException, ClassNotFoundException {
         try (Connection conn = db.connect()) {
             List<CD> list = this.getListCD();
@@ -195,20 +202,85 @@ public class CDController {
             System.out.println("Error: " + e.getMessage());
         }
     }
-    
-    public void readCDtoFile()throws IOException, ClassNotFoundException{
-        
-        List<CD> l = new ArrayList<>();
-        FileInputStream file = new FileInputStream("src/managerCD/cd.txt");
-        if(file.available()!=0){
-            ObjectInputStream in = new ObjectInputStream(file);
-            int size = in.readInt();
-            
-            for (int i = 0; i < size; i++) {
-                l.add((CD)in.readObject());
+
+    //read list cd from file cd.txt
+    public void readCDtoFile() throws IOException, ClassNotFoundException {
+        try {
+            List<CD> list = new ArrayList<>();
+            FileInputStream file = new FileInputStream("src/managerCD/cd.txt");
+            if (file.available() != 0) {
+                ObjectInputStream in = new ObjectInputStream(file);
+                int size = in.readInt();
+
+                for (int i = 0; i < size; i++) {
+                    list.add((CD) in.readObject());
+                }
+                in.close();
+                list.stream().forEach((CD cd) -> System.out.println(cd.toString()));
             }
-            in.close();
-            l.stream().forEach((CD cd)->System.out.println(cd.toString()));
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
+
+    public void addCDToXMLFile(CD ncd) throws IOException, SQLException, ClassNotFoundException {
+        try (Connection conn = db.connect()) {
+            listCds = this.getListCD();
+            try {
+                DocumentBuilderFactory docfFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder docBuilder = docfFactory.newDocumentBuilder();
+                Document doc = docBuilder.newDocument();
+                
+                Element rootElement;
+                String filePath = "src/managerCD/cd.xml";
+                File xmlFile = new File(filePath);
+                
+                if(xmlFile.isFile()){
+                    doc = docBuilder.parse(xmlFile);
+                    doc.getDocumentElement().normalize();
+                    rootElement = doc.getDocumentElement();                    
+                }else{
+                    rootElement = doc.createElement("CDs");
+                    doc.appendChild(rootElement);
+                }
+                
+                Element cd = doc.createElement("cd");
+                rootElement.appendChild(cd);
+                
+                Element id = doc.createElement("id");
+                id.appendChild(doc.createTextNode(Integer.toString(ncd.getId())));
+                cd.appendChild(id);
+                
+                Element name = doc.createElement("name");
+                name.appendChild(doc.createTextNode(ncd.getName()));
+                cd.appendChild(name);
+                
+                Element singer = doc.createElement("singer");
+                singer.appendChild(doc.createTextNode(ncd.getSinger()));
+                cd.appendChild(singer);
+                
+                Element numberSongs = doc.createElement("numbersongs");
+                numberSongs.appendChild(doc.createTextNode(Integer.toString(ncd.getNumberSongs())));
+                cd.appendChild(numberSongs);
+                
+                Element price = doc.createElement("price");
+                price.appendChild(doc.createTextNode(Double.toString(ncd.getPrice())));
+                cd.appendChild(price);
+                
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File(filePath));
+            transformer.transform(source, result);
+            System.out.println("Add CD to XML File is sussess!!!");
+                
+            } catch (Exception e) {
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    }
+    
+    
 }
