@@ -13,7 +13,10 @@ import org.junit.runners.Suite;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 20/9/2016
+ * TestSuite for manage JUnit Test Employee
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({EmployeeAVGAgeTest.class, EmployeeLowestSalaryTest.class, NumberEmployeeSalaryTest.class, EmployeeHighestSalaryTest.class, CalAverageSalaryTest.class})

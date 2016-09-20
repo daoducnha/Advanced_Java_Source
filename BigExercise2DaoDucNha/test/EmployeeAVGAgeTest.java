@@ -13,8 +13,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import stream.Employee;
-import stream.MainManagerEmployee;
+import streamEmployee.Employee;
+import streamEmployee.MainManagerEmployee;
 
 /**
  *

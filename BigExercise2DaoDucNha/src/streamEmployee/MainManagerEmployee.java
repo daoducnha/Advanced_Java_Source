@@ -1,4 +1,4 @@
-package stream;
+package streamEmployee;
 
 import java.util.ArrayList;
 import java.util.DoubleSummaryStatistics;
@@ -50,9 +50,12 @@ public class MainManagerEmployee {
 
         System.out.println("List Employee: ");
         printListEmployee(listeEmployees);
+        System.out.println("=========><=========");
         System.out.println("Number Employee have salary greater 3000000 is: " + numberEmployeeSalary(listeEmployees));
+        System.out.println("=========><=========");
         System.out.println("List Emplyee in name have string anh is: ");
         printListEmployeeAnh(listeEmployees);
+        System.out.println("=========><=========");
         System.out.println("Statistics salary of list employee: ");
         System.out.println("Highest salary in list employee is: "+String.format("%.2f", employeeHighestSalary(listeEmployees)));
         System.out.println("Lowest salary in list employee is: "+String.format("%.2f", employeeLowestSalary(listeEmployees)));

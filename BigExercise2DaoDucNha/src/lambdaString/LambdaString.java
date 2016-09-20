@@ -1,4 +1,4 @@
-package lambdaExpression;
+package lambdaString;
 
 import java.io.BufferedReader;
 import java.io.IOException;
