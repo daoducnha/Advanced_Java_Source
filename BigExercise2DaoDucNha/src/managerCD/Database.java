@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package managerCD;
 
 import com.mysql.jdbc.Connection;
@@ -11,7 +7,10 @@ import java.sql.SQLException;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 20-9-2016
+ * Class Database to manager connect database by JDBC
  */
 public class Database {
     private static final String JDBC_URL = 

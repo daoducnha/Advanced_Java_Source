@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package managerCD;
 
 import com.mysql.jdbc.Connection;
@@ -31,7 +27,8 @@ import org.xml.sax.SAXException;
  *
  * @author Dao Duc Nha
  * @version 1.0
- * @since 19-9-2016 Class CDController to manager list cd
+ * @since 19-9-2016 
+ * Class CDController to manager list cd
  */
 public class CDController {
 
@@ -224,7 +221,8 @@ public class CDController {
         }
     }
 
-    public void addCDToXMLFile() throws IOException, SQLException, ClassNotFoundException {
+    //read list cd from database and add list to file cd.xml 
+    public void addListCDToXMLFile() throws IOException, SQLException, ClassNotFoundException {
         try (Connection conn = db.connect()) {
             listCds = this.getListCD();
             try {
@@ -236,6 +234,7 @@ public class CDController {
                 String filePath = "src/managerCD/cd.xml";
                 File xmlFile = new File(filePath);
 
+                //root elements
                 if (xmlFile.isFile()) {
                     doc = docBuilder.parse(xmlFile);
                     doc.getDocumentElement().normalize();
@@ -246,31 +245,38 @@ public class CDController {
                     doc.appendChild(rootElement);
                 }
 
+                //remove all element in xml file
                 while (rootElement.hasChildNodes()) {
                     rootElement.removeChild(rootElement.getFirstChild());
                 }
 
+                
                 for (int i = 0; i < listCds.size(); i++) {
-
+                    
+                    //element cd
                     Element cd = doc.createElement("cd");
                     rootElement.appendChild(cd);
 
+                    //element id
                     Element id = doc.createElement("id");
                     id.appendChild(doc.createTextNode(Integer.toString(listCds.get(i).getId())));
                     cd.appendChild(id);
 
+                    //element name
                     Element name = doc.createElement("name");
                     name.appendChild(doc.createTextNode(listCds.get(i).getName()));
                     cd.appendChild(name);
-
+                    //element singer
                     Element singer = doc.createElement("singer");
                     singer.appendChild(doc.createTextNode(listCds.get(i).getSinger()));
                     cd.appendChild(singer);
 
+                    //element numberSongs
                     Element numberSongs = doc.createElement("numbersongs");
                     numberSongs.appendChild(doc.createTextNode(Integer.toString(listCds.get(i).getNumberSongs())));
                     cd.appendChild(numberSongs);
 
+                    //element price
                     Element price = doc.createElement("price");
                     price.appendChild(doc.createTextNode(Double.toString(listCds.get(i).getPrice())));
                     cd.appendChild(price);
@@ -282,7 +288,7 @@ public class CDController {
                 DOMSource source = new DOMSource(doc);
                 StreamResult result = new StreamResult(new File(filePath));
                 transformer.transform(source, result);
-                System.out.println("Add CD to XML File is sussess!!!");
+                System.out.println("Add list CD to XML File is sussess!!!");
 
             } catch (Exception e) {
             }
@@ -291,6 +297,7 @@ public class CDController {
         }
     }
 
+    //get a CD in file cd.xml
     public CD getCD(Node node) {
         CD cd1 = new CD();
         if (node.getNodeType() == Node.ELEMENT_NODE) {
@@ -305,6 +312,7 @@ public class CDController {
         return cd1;
     }
 
+    //get list Cd from cd.xml and return a list cd, if cd.xml empty return null
     public List<CD> printListCdFromXMLFile() throws IOException, ParserConfigurationException, SAXException {
         String filePath = "src/managerCD/cd.xml";
         File file = new File(filePath);

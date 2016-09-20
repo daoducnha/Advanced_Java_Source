@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package stream;
 
 import java.util.ArrayList;
@@ -13,7 +9,10 @@ import java.util.stream.Collectors;
 
 /**
  *
- * @author NHA
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 19-9-2016 
+ * Class MainManagerEmployee to manager list employee
  */
 public class MainManagerEmployee {
 
@@ -57,9 +56,8 @@ public class MainManagerEmployee {
         System.out.println("List Emplyee in name have string anh is: ");
         printListEmployeeAnh(listeEmployees);
         System.out.println("Statistics salary of list employee: ");
-        statisticsEmployee(listeEmployees);
-        IntSummaryStatistics statistics = listeEmployees.stream().mapToInt((Employee x)->x.getAge()).summaryStatistics();
-        System.out.println("Average age of employee in list is: "+statistics.getAverage());
+        statisticsEmployee(listeEmployees);        
+        System.out.println("Average age of employee in list is: "+calAverageAgge(listeEmployees));
     }
     
     public static void printListEmployee(List<Employee> lst) {
@@ -83,4 +81,9 @@ public class MainManagerEmployee {
         System.out.println("Average salary in list: "+statistics.getAverage());
     }
     
+    public static double calAverageAgge(List<Employee> lst) {
+        IntSummaryStatistics statistics = lst.stream().mapToInt((Employee x)->x.getAge()).summaryStatistics();
+        double avgAge = statistics.getAverage();
+        return avgAge;
+    }
 }

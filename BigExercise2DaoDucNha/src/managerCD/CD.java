@@ -1,15 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package managerCD;
 
 import java.io.Serializable;
 
 /**
  *
- * @author hv
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 20-9-2016
+ * Class CD contain information of a CD
  */
 public class CD implements Serializable {
 

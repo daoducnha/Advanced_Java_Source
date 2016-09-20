@@ -7,7 +7,10 @@ package stream;
 
 /**
  *
- * @author NHA
+ * @author Dao Duc Nha
+ * @version 1.0
+ * @since 19-9-2016 
+ * Class Employee content information Employee
  */
 public class Employee {
 
