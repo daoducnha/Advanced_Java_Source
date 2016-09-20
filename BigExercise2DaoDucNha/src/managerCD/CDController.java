@@ -123,7 +123,7 @@ public class CDController {
     public boolean searchCDByID(int id) throws SQLException, ClassNotFoundException {
         List<Integer> listID = null;
         try (Connection conn = db.connect()) {
-            String sql = "select * from cd";
+            String sql = "select id from cd";
             java.sql.Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
@@ -313,7 +313,7 @@ public class CDController {
     }
 
     //get list Cd from cd.xml and return a list cd, if cd.xml empty return null
-    public List<CD> printListCdFromXMLFile() throws IOException, ParserConfigurationException, SAXException {
+    public List<CD> getListCdFromXMLFile() throws IOException, ParserConfigurationException, SAXException {
         String filePath = "src/managerCD/cd.xml";
         File file = new File(filePath);
         List<CD> listcd = null;
