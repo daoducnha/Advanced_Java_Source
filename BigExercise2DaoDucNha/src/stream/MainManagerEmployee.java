@@ -54,7 +54,9 @@ public class MainManagerEmployee {
         System.out.println("List Emplyee in name have string anh is: ");
         printListEmployeeAnh(listeEmployees);
         System.out.println("Statistics salary of list employee: ");
-        statisticsEmployee(listeEmployees);
+        System.out.println("Highest salary in list employee is: "+String.format("%.2f", employeeHighestSalary(listeEmployees)));
+        System.out.println("Lowest salary in list employee is: "+String.format("%.2f", employeeLowestSalary(listeEmployees)));
+        System.out.println("Average salary in list employee is: "+String.format("%.2f", calAverageSalary(listeEmployees)));
         System.out.println("Average age of employee in list is: " + String.format("%.2f", calAverageAgge(listeEmployees)));
     }
 
@@ -64,7 +66,7 @@ public class MainManagerEmployee {
         lst.stream().forEach((Employee e) -> System.out.println(e.toString()));
     }
 
-    //count number employee have salary >3000
+    //count number employee have salary >3000000
     public static int numberEmployeeSalary(List<Employee> lst) {
         int count = (int) lst.stream().filter((Employee e) -> e.getSalary() > 3000000).count();
         return count;
@@ -78,13 +80,25 @@ public class MainManagerEmployee {
     }
 
     //statistics list employee about Highest salary , Lowest salary, Average salary;
-    public static void statisticsEmployee(List<Employee> lst) {
+    public static double employeeHighestSalary(List<Employee> lst) {
         DoubleSummaryStatistics statistics = lst.stream().mapToDouble((Employee x) -> x.getSalary()).summaryStatistics();
-        System.out.println("Highest salary in list: " + statistics.getMax());
-        System.out.println("Lowest salary in list: " + statistics.getMin());
-        System.out.println("Average salary in list: " + statistics.getAverage());
+        double salary = statistics.getMax();
+        return salary;
     }
 
+    public static double employeeLowestSalary(List<Employee> lst) {
+        DoubleSummaryStatistics statistics = lst.stream().mapToDouble((Employee x) -> x.getSalary()).summaryStatistics();
+        double salary = statistics.getMin();
+        return salary;
+    }
+    
+    public static double calAverageSalary(List<Employee> lst) {
+        DoubleSummaryStatistics statistics = lst.stream().mapToDouble((Employee x) -> x.getSalary()).summaryStatistics();
+        double salary = statistics.getAverage();
+        return salary;
+    }
+        
+    
     public static double calAverageAgge(List<Employee> lst) {
         IntSummaryStatistics statistics = lst.stream().mapToInt((Employee x) -> x.getAge()).summaryStatistics();
         double avgAge = statistics.getAverage();
