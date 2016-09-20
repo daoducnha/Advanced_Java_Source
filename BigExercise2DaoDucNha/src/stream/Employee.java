@@ -9,8 +9,7 @@ package stream;
  *
  * @author Dao Duc Nha
  * @version 1.0
- * @since 19-9-2016 
- * Class Employee content information Employee
+ * @since 19-9-2016 Class Employee content information Employee
  */
 public class Employee {
 
@@ -50,7 +49,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Name: " + name + "\tAge: " + age + "\tSalary: " + salary;
+        return "Name: " + name + "\tAge: " + age + "\tSalary: " + String.format("%.2f", salary);
     }
 
 }

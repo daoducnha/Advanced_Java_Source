@@ -1,4 +1,3 @@
-
 package stream;
 
 import java.util.ArrayList;
@@ -11,8 +10,7 @@ import java.util.stream.Collectors;
  *
  * @author Dao Duc Nha
  * @version 1.0
- * @since 19-9-2016 
- * Class MainManagerEmployee to manager list employee
+ * @since 19-9-2016 Class MainManagerEmployee to manager list employee
  */
 public class MainManagerEmployee {
 
@@ -49,40 +47,46 @@ public class MainManagerEmployee {
         listeEmployees.add(e13);
         listeEmployees.add(e14);
         listeEmployees.add(e15);
-        
+
         System.out.println("List Employee: ");
         printListEmployee(listeEmployees);
-        System.out.println("Number Employee have salary greater 3000000 is: "+ numberEmployeeSalary(listeEmployees));
+        System.out.println("Number Employee have salary greater 3000000 is: " + numberEmployeeSalary(listeEmployees));
         System.out.println("List Emplyee in name have string anh is: ");
         printListEmployeeAnh(listeEmployees);
         System.out.println("Statistics salary of list employee: ");
-        statisticsEmployee(listeEmployees);        
-        System.out.println("Average age of employee in list is: "+calAverageAgge(listeEmployees));
+        statisticsEmployee(listeEmployees);
+        System.out.println("Average age of employee in list is: " + String.format("%.2f", calAverageAgge(listeEmployees)));
     }
-    
+
+    //use Stream to print list employee 
+
     public static void printListEmployee(List<Employee> lst) {
-        lst.stream().forEach((Employee e)->System.out.println(e.toString()));
+        lst.stream().forEach((Employee e) -> System.out.println(e.toString()));
     }
-    
+
+    //count number employee have salary >3000
     public static int numberEmployeeSalary(List<Employee> lst) {
-        int count = (int) lst.stream().filter((Employee e)->e.getSalary()>3000000).count();
+        int count = (int) lst.stream().filter((Employee e) -> e.getSalary() > 3000000).count();
         return count;
     }
-    
+
+    //print list employee have String "anh" in name
+
     public static void printListEmployeeAnh(List<Employee> lst) {
-        List<Employee> lstAnh = lst.stream().filter((Employee e)->e.getName().contains("Anh")).collect(Collectors.toList());
+        List<Employee> lstAnh = lst.stream().filter((Employee e) -> e.getName().contains("Anh")).collect(Collectors.toList());
         printListEmployee(lstAnh);
     }
-    
+
+    //statistics list employee about Highest salary , Lowest salary, Average salary;
     public static void statisticsEmployee(List<Employee> lst) {
-        DoubleSummaryStatistics statistics  = lst.stream().mapToDouble((Employee x)->x.getSalary()).summaryStatistics();
-        System.out.println("Highest salary in list: "+statistics.getMax());
-        System.out.println("Lowest salary in list: "+statistics.getMin());
-        System.out.println("Average salary in list: "+statistics.getAverage());
+        DoubleSummaryStatistics statistics = lst.stream().mapToDouble((Employee x) -> x.getSalary()).summaryStatistics();
+        System.out.println("Highest salary in list: " + statistics.getMax());
+        System.out.println("Lowest salary in list: " + statistics.getMin());
+        System.out.println("Average salary in list: " + statistics.getAverage());
     }
-    
+
     public static double calAverageAgge(List<Employee> lst) {
-        IntSummaryStatistics statistics = lst.stream().mapToInt((Employee x)->x.getAge()).summaryStatistics();
+        IntSummaryStatistics statistics = lst.stream().mapToInt((Employee x) -> x.getAge()).summaryStatistics();
         double avgAge = statistics.getAverage();
         return avgAge;
     }
