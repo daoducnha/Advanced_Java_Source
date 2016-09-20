@@ -119,28 +119,6 @@ public class CDController {
         }
     }
 
-    //check list has id want search, return true if has, else return false
-    public boolean searchCDByID(int id) throws SQLException, ClassNotFoundException {
-        List<Integer> listID = null;
-        try (Connection conn = db.connect()) {
-            String sql = "select id from cd";
-            java.sql.Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
-            while (resultSet.next()) {
-                listID = new ArrayList<>();
-                listID.add(resultSet.getInt("id"));
-            }
-            conn.close();
-            if (listID.contains(id)) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException | ClassNotFoundException e) {
-        }
-        return false;
-    }
-
     //update number song and price of CD by id
     public void updateCD(int id) throws IOException, SQLException, ClassNotFoundException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));

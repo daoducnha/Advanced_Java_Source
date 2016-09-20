@@ -65,9 +65,7 @@ public class MainManagerCD {
                     }
                     System.out.println("========================");
                     System.out.println("Please Input ID CD want update: ");
-                    int idUpdate = Integer.parseInt(input.readLine());
-                    
-                    
+                    int idUpdate = Integer.parseInt(input.readLine());                                       
                     cDController.updateCD(idUpdate);
                     System.out.println("===========================");
                     break;
@@ -80,11 +78,7 @@ public class MainManagerCD {
                     System.out.println("========================");
 
                     System.out.println("Please input ID CD want remove: ");
-                    int idRemove = Integer.parseInt(input.readLine());
-                    while (cDController.searchCDByID(idRemove) == false) {
-                        System.out.println("Input ID Cd wrong, Please input ID in list CD: ");
-                        idRemove = Integer.parseInt(input.readLine());
-                    }
+                    int idRemove = Integer.parseInt(input.readLine());                    
                     cDController.removeCD(idRemove);
                     break;
                 case 6:
