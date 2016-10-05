@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/NHA/Desktop/NetBeansProjects/bookstore/src/entities/Book.hbm.xml</file>
+            <file>file:/C:/Users/NHA/Desktop/NetBeansProjects/bookstore/src/hibernate.reveng.xml</file>
+            <file>file:/C:/Users/NHA/Desktop/NetBeansProjects/bookstore/src/bookstore/BookStoreManager.java</file>
+            <file>file:/C:/Users/NHA/Desktop/NetBeansProjects/bookstore/src/entities/Author.hbm.xml</file>
+            <file>file:/C:/Users/NHA/Desktop/NetBeansProjects/bookstore/src/entities/Book.java</file>
+            <file>file:/C:/Users/NHA/Desktop/NetBeansProjects/bookstore/src/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/NHA/Desktop/NetBeansProjects/bookstore/src/entities/Bookdetail.java</file>
+            <file>file:/C:/Users/NHA/Desktop/NetBeansProjects/bookstore/src/bookstore/Bookstore.java</file>
+            <file>file:/C:/Users/NHA/Desktop/NetBeansProjects/bookstore/src/entities/Category.hbm.xml</file>
+            <file>file:/C:/Users/NHA/Desktop/NetBeansProjects/bookstore/src/entities/Bookdetail.hbm.xml</file>
+            <file>file:/C:/Users/NHA/Desktop/NetBeansProjects/bookstore/src/entities/Category.java</file>
+            <file>file:/C:/Users/NHA/Desktop/NetBeansProjects/bookstore/src/entities/Author.java</file>
+            <file>file:/C:/Users/NHA/Desktop/NetBeansProjects/bookstore/src/bookstore/HibernateUtil.java</file>
+        </group>
+    </open-files>
+</project-private>
